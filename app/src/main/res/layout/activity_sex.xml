@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.application.disabledv01.sex"
+    android:background="@drawable/background_gradient"    >
+
+    <io.rmiri.buttonloading.ButtonLoading
+        android:id="@+id/btnmale"
+        android:layout_width="352dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        app:BL_backgroundColor="#80ffffff"
+        app:BL_circleColor="#00AFEF"
+        app:BL_circleColorSecond="#8000AFEF"
+        app:BL_enable="true"
+        app:BL_stateShow="normal"
+        app:BL_text="Male"
+        app:BL_textColor="#FFFFFF"
+        app:BL_textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnfemale"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <io.rmiri.buttonloading.ButtonLoading
+        android:id="@+id/btnfemale"
+        android:layout_width="352dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="244dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        app:BL_backgroundColor="#80ffffff"
+        app:BL_circleColor="#4f0b0b"
+        app:BL_circleColorSecond="#ee3239"
+        app:BL_enable="true"
+        app:BL_stateShow="normal"
+        app:BL_text="Female"
+        app:BL_textColor="#FFFFFF"
+        app:BL_textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnmale" />
+
+
+</android.support.constraint.ConstraintLayout>
