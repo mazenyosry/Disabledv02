@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import io.rmiri.buttonloading.ButtonLoading;
 
-public class Sexx extends AppCompatActivity {
+public class Sex extends AppCompatActivity {
 
     ButtonLoading buttonmale, buttonfemale;
 
@@ -55,7 +55,7 @@ public class Sexx extends AppCompatActivity {
             @Override
             public void onFinish() {
                 //...
-                Intent s = new Intent(Sexx.this,MainActivity.class);
+                Intent s = new Intent(Sex.this,MainActivity.class);
                 startActivity(s);
             }
         });
