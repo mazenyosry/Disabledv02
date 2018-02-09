@@ -23,7 +23,7 @@
             android:name=".LoginActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".Sex"></activity>
+        <activity android:name=".Sexx"></activity>
     </application>
 
 </manifest>
