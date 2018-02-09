@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Email" />
+                android:hint="Ema" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
