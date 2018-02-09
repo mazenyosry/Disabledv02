@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signup();
-                Intent h=new Intent(SignupActivity.this,sex.class);
+                Intent h=new Intent(SignupActivity.this,Gender.class);
                 startActivity(h);
             }
         });

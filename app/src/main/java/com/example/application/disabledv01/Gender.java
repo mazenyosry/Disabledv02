@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import io.rmiri.buttonloading.ButtonLoading;
 
-public class sex extends AppCompatActivity {
+public class Gender extends AppCompatActivity {
 
     ButtonLoading buttonmale, buttonfemale;
 
@@ -48,7 +48,7 @@ public class sex extends AppCompatActivity {
                 //...
             }
         });
-
+  
 
     }
 }
