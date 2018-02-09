@@ -2,6 +2,7 @@ package com.example.application.disabledv01;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,10 +12,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignupActivity extends AppCompatActivity {
+
+    String ServerURL = "http://hti-project.000webhostapp.com/model/signup.php" ;
+    String TempName, TempEmail, Temppassword;
+
+
     private static final String TAG = "SignupActivity";
 
     @BindView(R.id.input_name)
@@ -35,9 +55,22 @@ public class SignupActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 signup();
-                Intent h=new Intent(SignupActivity.this,Seex.class);
-                startActivity(h);
+
+                if (validate()) {
+
+                    GetData();
+
+                    InsertData(TempName, TempEmail, Temppassword);
+
+                }
+
+
+
+
+
             }
         });
 
@@ -49,6 +82,67 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(nn1);
             }
         });
+    }
+
+    public void GetData(){
+
+        TempName = _nameText.getText().toString();
+
+        TempEmail = _emailText.getText().toString();
+
+        Temppassword = _passwordText.getText().toString();
+
+    }
+
+    public void InsertData(final String name, final String email, final String password){
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+            @Override
+            protected String doInBackground(String... params) {
+
+                String NameHolder = name ;
+                String EmailHolder = email ;
+                String passwordHolder = password ;
+
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+                nameValuePairs.add(new BasicNameValuePair("name", NameHolder));
+                nameValuePairs.add(new BasicNameValuePair("email", EmailHolder));
+                nameValuePairs.add(new BasicNameValuePair("password", passwordHolder));
+
+                try {
+                    HttpClient httpClient = new DefaultHttpClient();
+
+                    HttpPost httpPost = new HttpPost(ServerURL);
+
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    HttpEntity httpEntity = httpResponse.getEntity();
+
+
+                } catch (ClientProtocolException e) {
+
+                } catch (IOException e) {
+
+                }
+                return "Data Inserted Successfully";
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+
+                super.onPostExecute(result);
+
+                Toast.makeText(SignupActivity.this, "Data Submit Successfully", Toast.LENGTH_LONG).show();
+
+            }
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+
+        sendPostReqAsyncTask.execute(name, email, password);
     }
 
     public void signup() {

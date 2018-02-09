@@ -33,3 +33,7 @@ dependencies {
     implementation 'com.github.rasoulmiri:buttonloading:v1.0.8'
 
 }
+// for import org.apache.http
+android {
+    useLibrary 'org.apache.http.legacy'
+}

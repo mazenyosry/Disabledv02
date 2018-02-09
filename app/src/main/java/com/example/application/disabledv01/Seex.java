@@ -59,7 +59,7 @@ public class Seex extends AppCompatActivity {
                 startActivity(s);
             }
         });
-  
+
 
     }
 }

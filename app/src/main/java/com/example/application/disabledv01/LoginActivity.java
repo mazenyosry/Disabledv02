@@ -2,6 +2,7 @@ package com.example.application.disabledv01;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 login();
             }
         });
@@ -50,6 +62,126 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    String result = "";
+    public class MyAsyncTaskresources extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+
+        }
+        @Override
+        protected String  doInBackground(String... params) {
+
+
+            InputStream isr = null;
+
+            try{
+                String URL=params[0];
+                java.net.URL url = new URL( URL);
+                URLConnection urlConnection = url.openConnection();
+                isr  = new BufferedInputStream(urlConnection.getInputStream());
+
+            }
+
+            catch(Exception e){
+
+                Log.e("log_tag", "Error in http connection " + e.toString());
+
+
+
+            }
+
+//convert response to string
+
+            try{
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(isr,"iso-8859-1"),8);
+
+                StringBuilder sb = new StringBuilder();
+
+                String line = null;
+
+                while ((line = reader.readLine()) != null) {
+
+                    sb.append(line + "\n");
+
+                }
+
+                isr.close();
+
+                result=sb.toString();
+
+            }
+
+            catch(Exception e){
+
+                Log.e("log_tag", "Error  converting result " + e.toString());
+
+            }
+
+//parse json data
+
+
+            return null;
+        }
+
+        protected void onPostExecute(String  result2){
+            try {
+
+                String s = "";
+
+                JSONArray jArray = new JSONArray(result);
+
+                for (int i = 0; i < jArray.length(); i++) {
+
+                    JSONObject json = jArray.getJSONObject(i);
+
+                    s = s + "login info : "  + json.getString("user_id")
+                            + " " + json.getString("user_name")+ " " + json.getString("user_email")
+                            + " " + json.getString("user_pass")   ;
+
+                    break;}
+
+                if(s.length()>0){
+                    //  Bundle b =new Bundle();
+                    // b.putString("data",s);
+                    Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "hi", Toast.LENGTH_SHORT).show();
+
+                     Intent in=new Intent(getApplicationContext(),Seex.class);
+                    startActivity(in);
+
+
+
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "user name or password isnot correct", Toast.LENGTH_LONG).show();
+
+                }
+
+
+
+
+                }
+            catch (Exception e) {
+
+// TODO: handle exception
+
+                Log.e("log_tag", "Error Parsing Data "+e.toString());
+
+            }
+        }
+
+
+
+
+    }
+
+
+
+
+
 
     public void login() {
         Log.d(TAG, "Login");
@@ -88,6 +220,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
@@ -108,7 +241,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        finish();
+        new MyAsyncTaskresources().execute("http://hti-project.000webhostapp.com/model/login.php?email="+_emailText.getText().toString()+"&password=" +_passwordText.getText().toString());
+
+
     }
 
     public void onLoginFailed() {
