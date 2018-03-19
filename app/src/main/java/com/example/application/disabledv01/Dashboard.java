@@ -32,4 +32,9 @@ public class Dashboard extends AppCompatActivity {
         startActivity(ca);
 
     }
+
+    public void move(View v){
+        Intent mo= new Intent(this,Move.class);
+        startActivity(mo);
+    }
 }
