@@ -44,6 +44,8 @@ public class Seex extends AppCompatActivity {
                         buttonmale.setProgress(false);
                     }
                 }, 700);
+                Intent s = new Intent(Seex.this,Dashboard.class);
+               startActivity(s);
             }
 
             @Override
@@ -55,8 +57,8 @@ public class Seex extends AppCompatActivity {
             @Override
             public void onFinish() {
                 //...
-                Intent s = new Intent(Seex.this,MainActivity.class);
-                startActivity(s);
+//                Intent s = new Intent(Seex.this,MainActivity.class);
+//                startActivity(s);
             }
         });
 
