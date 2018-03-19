@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.application.disabledv01">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,7 +25,10 @@
             android:name=".LoginActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".Seex"></activity>
+        <activity android:name=".Seex" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".Battery" />
+        <activity android:name=".Callus"></activity>
     </application>
 
 </manifest>

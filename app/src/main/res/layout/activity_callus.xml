@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    android:background="@drawable/background_gradient"
+    tools:context="com.example.application.disabledv01.Callus">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <in.shadowfax.proswipebutton.ProSwipeButton
+            android:id="@+id/callus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            app:arrow_color="#4e2f19"
+            app:bg_color="#0b5c40"
+            app:btn_radius="2"
+            app:btn_text="Call us"
+            app:text_size="12sp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <in.shadowfax.proswipebutton.ProSwipeButton
+            android:id="@+id/awesome_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:arrow_color="#33FFFFFF"
+            app:bg_color="@android:color/holo_blue_dark"
+            app:btn_radius="2"
+            app:btn_text="Our Facebook Page"
+            app:text_size="12sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

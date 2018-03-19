@@ -12,10 +12,18 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
     }
+
     public void battery(View v){
 
         Intent ba = new Intent(this,Battery.class);
         startActivity(ba);
+
+    }
+
+    public void callus ( View v){
+
+        Intent ca = new Intent(this,Callus.class);
+        startActivity(ca);
 
     }
 }
