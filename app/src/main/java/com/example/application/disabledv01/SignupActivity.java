@@ -2,6 +2,7 @@ package com.example.application.disabledv01;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,47 +31,45 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SignupActivity extends AppCompatActivity {
-
+    ConnectionDetector cd;
     String ServerURL = "http://hti-project.000webhostapp.com/model/signup.php" ;
     String TempName, TempEmail, Temppassword;
-
-
     private static final String TAG = "SignupActivity";
-
-    @BindView(R.id.input_name)
-    EditText _nameText;
+    @BindView(R.id.input_name) EditText _nameText;
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_signup)
-    Button _signupButton;
-    @BindView(R.id.link_login)
-    TextView _loginLink;
+    @BindView(R.id.rinput_password) EditText _rpasswordText;
+    @BindView(R.id.btn_signup) Button _signupButton;
+    @BindView(R.id.link_login) TextView _loginLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
+        cd= new ConnectionDetector(this);
+
+
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                signup();
+                if (cd.isConnected()) {
+                    signup();
 
-                if (validate()) {
+                    if (validate()) {
 
-                    GetData();
+                        GetData();
 
-                    InsertData(TempName, TempEmail, Temppassword);
+                        InsertData(TempName, TempEmail, Temppassword);
 
+                    }
                 }
-
-
-
-
-
+                else {
+                    Toast.makeText(SignupActivity.this,"plese connect to the internet",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -161,9 +160,6 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
 
@@ -187,7 +183,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "sigu up failed", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
@@ -198,6 +194,7 @@ public class SignupActivity extends AppCompatActivity {
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        String rpassword=_rpasswordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
             _nameText.setError("at least 3 characters");
@@ -219,6 +216,14 @@ public class SignupActivity extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
+
+        if (rpassword.isEmpty() || ! rpassword.equals(password)) {
+            _rpasswordText.setError("password is not equal ");
+            valid = false;
+        } else {
+            _rpasswordText.setError(null);
+        }
+
 
         return valid;
     }

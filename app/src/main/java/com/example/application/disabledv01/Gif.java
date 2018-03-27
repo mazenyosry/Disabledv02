@@ -45,7 +45,7 @@ public class Gif extends AppCompatActivity {
                                 Intent s = new Intent(Gif.this,LoginActivity.class);
                                 startActivity(s);      // this code will be executed after 2 seconds
                             }
-                        }, 15000);
+                        }, 1000);
 
                         return false;
                     }
