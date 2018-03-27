@@ -50,11 +50,16 @@ public class Gif extends AppCompatActivity {
                         return false;
                     }
                 })
-                .into(loading)
-                ;
+                .into(loading);
 
 
 
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
     }
 }

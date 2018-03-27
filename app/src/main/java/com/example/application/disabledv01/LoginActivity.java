@@ -1,7 +1,9 @@
 package com.example.application.disabledv01;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -50,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (cd.isConnected()) {
 
                     login();
+//                    StartSharedPrefs.saveSharedSetting(LoginActivity.this, "CaptainCode", "false");
+//                    Intent ImLoggedIn = new Intent(getApplicationContext(), Dashboard.class);
+//                    startActivity(ImLoggedIn);
+//                    finish();
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"plese connect to the internet",Toast.LENGTH_LONG).show();
@@ -97,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }, 3000);
+
     }
 
 
@@ -245,12 +252,17 @@ public class LoginActivity extends AppCompatActivity {
                     break;}
 
                 if(s.length()>0){
+                    SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("a","2");
+                    editor.apply();
                     Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
                     Intent in=new Intent(getApplicationContext(),Seex.class);
                     startActivity(in);
+                    finish();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "user name or password is not correct", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "user name or password is not correct", Toast.LENGTH_LONG).show();
 
                 }
 

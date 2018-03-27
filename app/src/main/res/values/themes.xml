@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme.Dark" parent="Base.ThemeOverlay.AppCompat.Dark">
-        <item name="colorPrimary">@color/ne</item>
+        <item name="colorPrimary">@color/backgroundcolor</item>
 
     </style>
 </resources>
