@@ -27,11 +27,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_name"
+
+            <EditText
+                android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="Name" />
+                android:drawableLeft="@drawable/ic_username"
+                android:hint="  Name"
+                android:inputType="textCapWords" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
@@ -44,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/ic_email"
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
@@ -57,7 +61,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_password"
                 android:hint="Password"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Reinter Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/rinput_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Re-enter Password"
+                android:drawableLeft="@drawable/ic_password" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Signup Button -->
