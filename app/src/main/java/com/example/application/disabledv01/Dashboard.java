@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -16,8 +17,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         ActivityCompat.requestPermissions(Dashboard.this, new String[]{Manifest.permission.CALL_PHONE},1);
-
-
         ActivityCompat.requestPermissions(Dashboard.this, new String[]{Manifest.permission.INTERNET},1);
     }
 
@@ -48,6 +47,13 @@ public class Dashboard extends AppCompatActivity {
         Intent LogOut = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(LogOut);
         finish();
+
+    }
+    public void blotooth (View v){
+        Intent z= new Intent(this,Blotooth.class);
+        startActivity(z);
+        Toast.makeText(Dashboard.this, "sent", Toast.LENGTH_LONG).show();
+
 
     }
 
