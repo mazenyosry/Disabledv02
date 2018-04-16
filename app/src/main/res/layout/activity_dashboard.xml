@@ -260,7 +260,8 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:background="@drawable/ic_bluetooth_black_24dp"
+                            android:background="@color/colorPrimaryDark"
+                            android:src="@drawable/ic_bluetooth_black_24dp"
                             android:padding="10dp"
                             />
 
@@ -268,7 +269,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Blotooth"
+                            android:text="Bluetooth"
                             android:textColor="@color/ne"
                             android:textStyle="bold" />
 
@@ -305,14 +306,16 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:background="@color/lightgray"
+                        android:padding="20dp"
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
                             android:background="#daebeb"
-                            android:padding="15dp"
-                            android:src="@drawable/ic_exit_to_app_black_24dp" />
+                            android:src="@drawable/ic_exit_to_app_black_24dp"
+                            android:padding="10dp"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"

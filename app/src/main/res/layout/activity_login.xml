@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableStart="@drawable/ic_email"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Password"
-                android:drawableLeft="@drawable/ic_password"
+                android:drawableStart="@drawable/ic_password"
                 />
         </android.support.design.widget.TextInputLayout>
 

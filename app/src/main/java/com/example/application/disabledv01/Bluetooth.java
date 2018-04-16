@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -29,11 +28,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
-import java.text.BreakIterator;
 import java.util.Set;
 import java.util.UUID;
 
-public class Blotooth extends AppCompatActivity {
+public class Bluetooth extends AppCompatActivity {
 
     public static String EXTRA_ADDRESS = "device_address";
     private TextView mBluetoothStatus;
@@ -66,7 +64,7 @@ public class Blotooth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blotooth);
+        setContentView(R.layout.activity_bluetooth);
 
         mBluetoothStatus = (TextView)findViewById(R.id.bluetoothStatus);
         mScanBtn = (Button)findViewById(R.id.scan);
@@ -244,7 +242,7 @@ public class Blotooth extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             String info = ((TextView) view).getText().toString();
             String address = info.substring(info.length()-17);
-            Intent i = new Intent(Blotooth.this, Move.class);
+            Intent i = new Intent(Bluetooth.this, Move.class);
             i.putExtra(EXTRA_ADDRESS, address);
             startActivity(i);
 

@@ -39,7 +39,11 @@
         <activity android:name=".Battery" />
         <activity android:name=".Callus" />
         <activity android:name=".Move" />
-        <activity android:name=".Blotooth"></activity>
+        <activity android:name=".Bluetooth"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
