@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:drawableStart="@drawable/ic_email"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Password"
-                android:drawableStart="@drawable/ic_password"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -59,6 +59,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:padding="12dp"
+            android:background="@drawable/buttonstyle"
             android:text="Login" />
 
         <TextView

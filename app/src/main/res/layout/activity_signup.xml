@@ -32,7 +32,7 @@
                 android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_username"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:hint="  Name"
                 android:inputType="textCapWords" />
         </android.support.design.widget.TextInputLayout>
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/ic_password"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -76,12 +76,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Re-enter Password"
-                android:drawableLeft="@drawable/ic_password" />
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_signup"
+            android:background="@drawable/buttonstyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

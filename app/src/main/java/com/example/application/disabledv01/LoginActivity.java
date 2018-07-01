@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +29,6 @@ import butterknife.ButterKnife;
 
 
 public class LoginActivity extends AppCompatActivity {
-    private ProgressDialog dialog;
     ConnectionDetector cd;
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -86,15 +84,10 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        dialog = new ProgressDialog(LoginActivity.this);
-        dialog.setMessage("Doing something, please wait.");
-        dialog.show();
-        Drawable progressDrawable = getResources().getDrawable(R.drawable.neww4);
-        dialog.setProgressDrawable(progressDrawable);
-//        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark);
-//        progressDialog.setIndeterminate(true);
-//        progressDialog.setMessage("Authenticating...");
-//        progressDialog.show();
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
@@ -107,9 +100,10 @@ public class LoginActivity extends AppCompatActivity {
                         // On complete call either onLoginSuccess or onLoginFailed
                         onLoginSuccess();
                         // onLoginFailed();
-                        dialog.dismiss();
+
+                        progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 4000);
 
     }
 
@@ -146,8 +140,6 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         new MyAsyncTaskresources().execute("http://hti-project.000webhostapp.com/model/login.php?email="+_emailText.getText().toString()+"&password=" +_passwordText.getText().toString());
-        Intent n = new Intent(LoginActivity.this,Bluetooth.class);
-        startActivity(n);
 
 
     }
@@ -270,8 +262,8 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(in);
                     finish();
                 }
-                else {
-                    Toast.makeText(LoginActivity.this, "user name or password is not correct", Toast.LENGTH_LONG).show();
+                 if (s.length()==0){
+                    Toast.makeText(getApplicationContext(), "user name or password is not correct", Toast.LENGTH_LONG).show();
 
                 }
 

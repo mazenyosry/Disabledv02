@@ -35,13 +35,18 @@ public class Move extends AppCompatActivity {
 
         new ConnectBT().execute();
 
+
+
     }
 
+
     public void dowen(View view) {
+
         sendSignal("1");
         Toast.makeText(Move.this, "sent", Toast.LENGTH_LONG).show();
 
     }
+
 
     public void left(View view) {
         sendSignal("2");
@@ -55,11 +60,13 @@ public class Move extends AppCompatActivity {
 
     }
 
+
     public void up(View view) {
         sendSignal("4");
         Toast.makeText(Move.this, "sent", Toast.LENGTH_LONG).show();
 
     }
+
 
 
     private void sendSignal ( String number ) {
@@ -92,6 +99,8 @@ public class Move extends AppCompatActivity {
     private class ConnectBT extends AsyncTask<Void, Void, Void> {
         private boolean ConnectSuccess = true;
 
+
+
         @Override
         protected  void onPreExecute () {
             progress = ProgressDialog.show(Move.this, "Connecting...", "Please Wait!!!");
@@ -101,6 +110,9 @@ public class Move extends AppCompatActivity {
         protected Void doInBackground (Void... devices) {
             try {
                 if ( btSocket==null || !isBtConnected ) {
+                    SharedPreferences sharedPreferences=getSharedPreferences("device", Context.MODE_PRIVATE);
+                    address =sharedPreferences.getString("dd",null);
+
                     myBluetooth = BluetoothAdapter.getDefaultAdapter();
                     BluetoothDevice dispositivo = myBluetooth.getRemoteDevice(address);
                     btSocket = dispositivo.createInsecureRfcommSocketToServiceRecord(myUUID);
@@ -127,6 +139,7 @@ public class Move extends AppCompatActivity {
             }
 
             progress.dismiss();
+
         }
     }
 }
