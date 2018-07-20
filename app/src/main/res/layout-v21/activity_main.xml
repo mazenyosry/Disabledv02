@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.application.disabledv01.MainActivity"
-    android:background="@drawable/background_gradient"
+    android:background="@color/backgroundcolor"
     >
 
     <ImageView
@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="400dp"
-        android:background="@drawable/circle_shape"
+        android:background="@drawable/buttonstyle"
         android:onClick="start"
         android:text="Let's Start"
         android:textColor="#1A1A22"
@@ -47,7 +47,6 @@
         android:layout_marginEnd="137dp"
         android:layout_marginStart="138dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/aclonica"
         android:text="Wheely"
         android:textAppearance="@android:style/TextAppearance.Material.Display1"
         android:textSize="40sp"
@@ -64,7 +63,6 @@
         android:layout_marginEnd="27dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="17dp"
-        android:fontFamily="@font/aguafina_script"
         android:text="Built to give you extra abilities without giving it energy"
         android:textColorHighlight="@color/yello"
         android:textAlignment="center"

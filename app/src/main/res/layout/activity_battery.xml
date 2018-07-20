@@ -5,14 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
-    tools:context="com.example.application.disabledv01.Battery">
+    tools:context="com.example.application.disabledv01.Battery"
+    >
 
     <com.example.application.disabledv01.BatteryProgressView
+
         android:id="@+id/progress"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
+
+
         />
+
 
     <EditText
         android:id="@+id/valueET"

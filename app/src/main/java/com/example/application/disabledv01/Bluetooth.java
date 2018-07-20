@@ -33,7 +33,7 @@ import java.text.BreakIterator;
 import java.util.Set;
 import java.util.UUID;
 
-public class Blotooth extends AppCompatActivity {
+class Blotooth extends AppCompatActivity {
 
     public static String EXTRA_ADDRESS = "device_address";
     private TextView mBluetoothStatus;
@@ -66,7 +66,7 @@ public class Blotooth extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blotooth);
+        setContentView(R.layout.activity_bluetooth);
 
         mBluetoothStatus = (TextView)findViewById(R.id.bluetoothStatus);
         mScanBtn = (Button)findViewById(R.id.scan);

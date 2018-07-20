@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
-    android:background="@drawable/background_gradient"
+    android:background="@color/backgroundcolor"
     >
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@drawable/logo"
+        <ImageView android:src="@drawable/ic_accessible_black_24dp"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
@@ -33,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:hint="  Name"
+                android:hint=" Name"
+
                 android:inputType="textCapWords" />
         </android.support.design.widget.TextInputLayout>
 

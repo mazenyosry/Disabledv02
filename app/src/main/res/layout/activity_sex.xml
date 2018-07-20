@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.application.disabledv01.Seex"
-    android:background="@drawable/background_gradient"    >
+    android:background="@color/backgroundcolor"    >
 
-    <io.rmiri.buttonloading.ButtonLoading
+        <io.rmiri.buttonloading.ButtonLoading
         android:id="@+id/btnmale"
         android:layout_width="352dp"
         android:layout_height="86dp"

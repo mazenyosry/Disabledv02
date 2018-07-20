@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,8 +30,8 @@ public class Move extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent newint = getIntent();
-        address = newint.getStringExtra(Bluetooth.EXTRA_ADDRESS);
+//        Intent newint = getIntent();
+//        address = newint.getStringExtra(Bluetooth.EXTRA_ADDRESS);
         setContentView(R.layout.activity_move);
 
 

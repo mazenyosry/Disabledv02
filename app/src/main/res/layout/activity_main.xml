@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.application.disabledv01.MainActivity"
-    android:background="@drawable/background_gradient"
+    android:background="@color/backgroundcolor"
     >
 
     <ImageView
@@ -30,14 +30,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="400dp"
-        android:background="@drawable/circle_shape"
+        android:background="@drawable/buttonstyle"
         android:onClick="start"
         android:text="Let's Start"
         android:textColor="#1A1A22"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/textView2"
@@ -47,9 +48,7 @@
         android:layout_marginEnd="137dp"
         android:layout_marginStart="138dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/aclonica"
         android:text="Wheely"
-        android:textAppearance="@android:style/TextAppearance.Material.Display1"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,11 +63,11 @@
         android:layout_marginEnd="27dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="17dp"
-        android:fontFamily="@font/aguafina_script"
         android:text="Built to give you extra abilities without giving it energy"
         android:textColorHighlight="@color/yello"
         android:textAlignment="center"
         android:textSize="30sp"
+
         app:layout_constraintBottom_toTopOf="@+id/on"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

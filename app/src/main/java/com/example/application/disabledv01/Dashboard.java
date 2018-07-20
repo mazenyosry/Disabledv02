@@ -50,7 +50,7 @@ public class Dashboard extends AppCompatActivity {
 
     }
     public void blotooth (View v){
-        Intent z= new Intent(this,Bluetooth.class);
+        Intent z= new Intent(this,Blotooth.class);
         startActivity(z);
         Toast.makeText(Dashboard.this, "sent", Toast.LENGTH_LONG).show();
 
