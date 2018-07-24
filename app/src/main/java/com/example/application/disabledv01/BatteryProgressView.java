@@ -22,8 +22,8 @@ public class BatteryProgressView extends View {
     private Paint outerCirclePaint,innerCirclePaint,progressPaint,textPaint,percentagePaint,subTextPaint;
     private int outerCircleColor=0xFF00BDEB;
     private int innerCircleColor=0xFF00C0EB;
-    private int progressColor=0xFFFFFFFF;
-    private int textColor=0xFFFFFFFF;
+    private int progressColor=0xff00FF00;
+    private int textColor=0xff09c6df;
     private int OUTER_STROKE_WIDTH =2;
     private int INNER_STROKE_WIDTH =8;
     private static final int START_ANGLE=270;

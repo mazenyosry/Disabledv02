@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@color/backgroundcolor"
     tools:context="com.example.application.disabledv01.Battery"
     >
 
@@ -13,10 +13,9 @@
         android:id="@+id/progress"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:layout_centerInParent="true"
 
-
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 
 
     <EditText

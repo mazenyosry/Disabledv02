@@ -30,7 +30,7 @@ public class Gif extends AppCompatActivity {
 
 
         Glide.with(Gif.this)
-                .load(R.drawable.disgif)
+                .load(R.drawable.finalgif)
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -45,7 +45,7 @@ public class Gif extends AppCompatActivity {
                                 Intent s = new Intent(Gif.this,LoginActivity.class);
                                 startActivity(s);      // this code will be executed after 2 seconds
                             }
-                        }, 150);
+                        }, 10000);
 
                         return false;
                     }
