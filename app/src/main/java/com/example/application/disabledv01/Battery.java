@@ -362,8 +362,10 @@ public class Battery extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        mConnectedThread.cancel();
+        if (mConnectedThread!=null) {
+            mConnectedThread.cancel();
 
+        }
     }
 
 
