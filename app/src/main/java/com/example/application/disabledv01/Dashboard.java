@@ -48,13 +48,13 @@ public class Dashboard extends AppCompatActivity {
         startActivity(LogOut);
         finish();
 
+
     }
-    public void blotooth (View v){
-        Intent z= new Intent(this,Blotooth.class);
+    public void help (View v){
+        Intent z= new Intent(this,Help.class);
         startActivity(z);
 
 
     }
-
 
 }

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -211,6 +212,15 @@ public class Move extends AppCompatActivity {
         protected  void onPreExecute () {
 
             progress = ProgressDialog.show(Move.this, "Connecting...", "Please Wait!!!");
+//            final Handler handler = new Handler();
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    // Do something after 5s = 5000ms
+//                    progress.cancel();
+//                    ;
+//                }
+//            }, 5000);
         }
 
         @Override
@@ -238,7 +248,7 @@ public class Move extends AppCompatActivity {
             super.onPostExecute(result);
 
             if (!ConnectSuccess) {
-                msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
+                msg("Bluetooth not on");
                 finish();
             } else {
                 msg("Connected");

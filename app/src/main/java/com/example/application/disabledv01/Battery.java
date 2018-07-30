@@ -59,6 +59,7 @@ public class Battery extends AppCompatActivity {
 
     String address = "20:16:09:12:02:09";
     String name ="hc01.com HC-05";
+    boolean threadcheck= true;
 
     private final String TAG = Blotooth.class.getSimpleName();
     private Handler mHandler; // Our main handler that will receive callback notifications
@@ -105,9 +106,13 @@ public class Battery extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
 
             return;
-                                }
+        }
+
         else {
+
             co();
+
+
              }
 
         mHandler = new Handler(){
@@ -142,11 +147,11 @@ public class Battery extends AppCompatActivity {
 
 
     public void setvaluee(View v){
-//        int val;
-//        val = Integer.parseInt(String.valueOf(valueE.getText()));
-//        progres.setProgress(val);
+        int val;
+        val = Integer.parseInt(String.valueOf(valueE.getText()));
+        progres.setProgress(val);
         if(mConnectedThread != null) //First check to make sure thread created
-            mConnectedThread.write("1");
+            mConnectedThread.write("5");
 
     }
 
@@ -261,8 +266,8 @@ public class Battery extends AppCompatActivity {
                     try {
                         fail = true;
                         mBTSocket.close();
-//                        mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
-//                                .sendToTarget();
+                        mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
+                                .sendToTarget();
                     } catch (IOException e2) {
                         //insert code to deal with this
                         Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
@@ -303,6 +308,7 @@ public class Battery extends AppCompatActivity {
             mmSocket = socket;
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
+            threadcheck=false;
 
             // Get the input and output streams, using temp objects because
             // member streams are final
@@ -362,25 +368,36 @@ public class Battery extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (mConnectedThread!=null) {
+        if (mBTSocket!=null&&threadcheck==false) {
+
             mConnectedThread.cancel();
 
         }
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        co();
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        co();
+//    }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        co();
-    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if(!mBTAdapter.isEnabled()) {
+//
+//            return;
+//        }
+//
+//        else {
+//
+//            co();
+//
+//
+//        }
+//    }
 
 }
 

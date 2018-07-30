@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_login) Button _loginButton;
     @BindView(R.id.link_signup) TextView _signupLink;
 
+    boolean logincheck=true;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +53,15 @@ public class LoginActivity extends AppCompatActivity {
                 if (cd.isConnected()) {
 
                     login();
-//                    StartSharedPrefs.saveSharedSetting(LoginActivity.this, "CaptainCode", "false");
-//                    Intent ImLoggedIn = new Intent(getApplicationContext(), Dashboard.class);
-//                    startActivity(ImLoggedIn);
-//                    finish();
+
+
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"plese connect to the internet",Toast.LENGTH_LONG).show();
                 }
+
+
+
             }
         });
 
@@ -103,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         progressDialog.dismiss();
                     }
-                }, 4000);
+                }, 5000);
 
     }
 
@@ -235,7 +237,7 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         }
 
-        protected void onPostExecute(String  result2){
+        protected void onPostExecute(String  result2) {
             try {
 
                 String s = "";
@@ -246,35 +248,44 @@ public class LoginActivity extends AppCompatActivity {
 
                     JSONObject json = jArray.getJSONObject(i);
 
-                    s = s + "login info : "  + json.getString("user_id")
-                            + " " + json.getString("user_name")+ " " + json.getString("user_email")
-                            + " " + json.getString("user_pass")   ;
+                    s = s + "login info : " + json.getString("user_id")
+                            + " " + json.getString("user_name") + " "
+                            + json.getString("user_email")
+                            + " " + json.getString("user_pass");
 
-                    break;}
 
-                if(s.length()>0){
-                    SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor=sharedPreferences.edit();
-                    editor.putString("a","2");
+                    break;
+
+                }
+
+
+                if (s.length() > 0) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("acs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("a", "2");
                     editor.apply();
-                    Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-                    Intent in=new Intent(getApplicationContext(),Seex.class);
+                    logincheck = false;
+                    Intent in = new Intent(getApplicationContext(), Dashboard.class);
                     startActivity(in);
                     finish();
-                }
-                 if (s.length()==0){
-                    Toast.makeText(getApplicationContext(), "user name or password is not correct", Toast.LENGTH_LONG).show();
+
 
                 }
+
+
 
             }
-            catch (Exception e) {
+                 catch (Exception e) {
 
 // TODO: handle exception
 
                 Log.e("log_tag", "Error Parsing Data "+e.toString());
 
             }
+
+if ((logincheck==true)) {
+    Toast.makeText(getApplicationContext(), "user name or password is not correct", Toast.LENGTH_LONG).show();
+}
         }
 
 
