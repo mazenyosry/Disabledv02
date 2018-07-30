@@ -29,7 +29,7 @@ public class Dashboard extends AppCompatActivity {
 
     public void callus ( View v){
 
-        Intent ca = new Intent(this,Callus.class);
+        Intent ca = new Intent(this,About.class);
         startActivity(ca);
 
     }

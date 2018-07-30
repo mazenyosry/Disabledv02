@@ -195,13 +195,13 @@
                             android:layout_height="64dp"
                             android:background="@drawable/circlebackgroundyellow"
                             android:padding="10dp"
-                            android:src="@drawable/ic_contact_phone_black_24dp" />
+                            android:src="@drawable/ic_group_black_24dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="Call Us"
+                            android:text="About Us"
                             android:textColor="@color/maincolor"
                             android:textStyle="bold" />
 
@@ -216,7 +216,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="1dp"
-                            android:text="Ways To Reach Us."
+                            android:text="Our information and ways To Reach Us"
                             android:textColor="@color/maincolor" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>

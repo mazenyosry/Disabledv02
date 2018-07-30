@@ -42,7 +42,8 @@
         <activity android:name=".Callus" />
         <activity android:name=".Move" />
         <activity android:name=".Blotooth" />
-        <activity android:name=".Help"></activity>
+        <activity android:name=".Help" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>
