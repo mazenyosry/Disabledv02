@@ -8,7 +8,6 @@
     android:background="@color/backgroundcolor"
     >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,7 +39,9 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
                     android:src="@drawable/ic_brightness_1_black_24dp"
                     />
 
@@ -48,17 +49,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="21dp"
-                    android:text="How to use the app ? "
+                    android:textSize="21sp"
+                    android:textColor="@color/black"
+                    android:text="@string/UseTheAppQ"
+                    android:layout_marginBottom="10dp"
                     />
 
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="30dp"
-                android:text="- You should turn on the bluetooth\n    in your device.\n- The app will connect to the chair\n    automaticly.\n- You should turn on gps location\n    in your device."
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/HowToUseApp"
                 />
 
 
@@ -72,7 +77,10 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="23dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+
                     android:src="@drawable/ic_brightness_1_black_24dp"
                     />
 
@@ -80,8 +88,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="21dp"
-                    android:text="How to control with the app ? "
+                    android:textSize="21sp"
+                    android:textColor="@color/black"
+                    android:text="@string/ControlChairQ"
+                    android:layout_marginBottom="10dp"
                     />
 
             </LinearLayout>
@@ -90,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_marginLeft="30dp"
-                android:text="- Select move.\n- Press on direction buttons."
+                android:text="@string/HowToControlChair"
+                android:layout_marginBottom="10dp"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,7 +113,9 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
                     android:src="@drawable/ic_brightness_1_black_24dp"
                     />
 
@@ -110,48 +123,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="21dp"
-                    android:text="How to change chair speed? "
+                    android:textSize="21sp"
+                    android:textColor="@color/black"
+                    android:text="@string/ChairSpeedQ"
+                    android:layout_marginBottom="10dp"
+
                     />
 
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="30dp"
-                android:text="- Select move.\n- Select speed from select speed\n    you have 4 levels of speed."
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/ic_brightness_1_black_24dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="21dp"
-                    android:text="How to show battary percentage ? "
-                    />
-
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:layout_marginLeft="30dp"
-                android:text="- Select battary.\n- You will see the life percentage."
+                android:text="@string/ControllingSpeed"
                 />
 
             <LinearLayout
@@ -164,7 +149,9 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="21dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
                     android:src="@drawable/ic_brightness_1_black_24dp"
                     />
 
@@ -172,17 +159,58 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textSize="21dp"
-                    android:text="How to use handkit? "
+                    android:textSize="21sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+
+                    android:text="@string/BatteryPercentageQ"
                     />
 
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:layout_marginLeft="30dp"
-                android:text="- Turn on handkit power.\n- The handkit will connect automaticly\n    to chaire.\n- Use the tatto to control."
+                android:text="@string/BatteryPercentage"
+                android:layout_marginBottom="10dp"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_brightness_1_black_24dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="21sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/black"
+                    android:text="@string/HandKitQ"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/HandkitUsage"
+                android:layout_marginBottom="30dp"
                 />
 
 

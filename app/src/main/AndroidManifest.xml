@@ -31,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Gif" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme" />
@@ -39,11 +38,9 @@
         <activity android:name=".Seex" />
         <activity android:name=".Dashboard" />
         <activity android:name=".Battery" />
-        <activity android:name=".Callus" />
         <activity android:name=".Move" />
-        <activity android:name=".Blotooth" />
         <activity android:name=".Help" />
-        <activity android:name=".About"></activity>
+        <activity android:name=".About"/>
     </application>
 
 </manifest>

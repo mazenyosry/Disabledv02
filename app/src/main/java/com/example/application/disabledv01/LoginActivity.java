@@ -1,5 +1,6 @@
 package com.example.application.disabledv01;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     ConnectionDetector cd;
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    private ProgressDialog progress;
     @BindView(R.id.input_email) EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
     @BindView(R.id.btn_login) Button _loginButton;
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(LoginActivity.this,"plese connect to the internet",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();
                 }
 
 
@@ -86,10 +88,9 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
+
+        progress = ProgressDialog.show(LoginActivity.this, "Signing In...", "Please Wait, I am authenticating and saving your data .");
+
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                         onLoginSuccess();
                         // onLoginFailed();
 
-                        progressDialog.dismiss();
+                        progress.dismiss();
                     }
                 }, 5000);
 
@@ -147,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Login Failed,Try Again.", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
     }
@@ -159,14 +160,14 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            _emailText.setError("Please,Enter a valid email address form");
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+            _passwordText.setError("Password must be between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);
@@ -181,6 +182,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     String result = "";
+    @SuppressLint("StaticFieldLeak")
     public class MyAsyncTaskresources extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
@@ -288,8 +290,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
-if ((logincheck==true)) {
-    Toast.makeText(getApplicationContext(), "user name or password is not correct", Toast.LENGTH_LONG).show();
+if ((logincheck)) {
+    Toast.makeText(getApplicationContext(), "Sorry, Data you entered is not correct.. Try Again", Toast.LENGTH_LONG).show();
 }
         }
 

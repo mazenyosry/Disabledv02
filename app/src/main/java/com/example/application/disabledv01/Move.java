@@ -1,18 +1,16 @@
 package com.example.application.disabledv01;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -24,8 +22,7 @@ import java.util.UUID;
 
 public class Move extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner spinner;
-    private static final String[]paths = {"Set Speed", "Speed 1", "Speed 2","Speed 3","Speed 4"};
+     Spinner spinner;
     ImageButton up , right , left , dowen ;
     String address = "20:16:09:12:02:09";
     private ProgressDialog progress;
@@ -39,6 +36,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
 
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +44,11 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         setContentView(R.layout.activity_move);
 
 
-        up = (ImageButton)findViewById(R.id.imageButton);
-        right = (ImageButton)findViewById(R.id.imageButton3);
-        left = (ImageButton)findViewById(R.id.imageButton2);
-        dowen = (ImageButton)findViewById(R.id.imageButton4);
-        spinner = (Spinner)findViewById(R.id.speedSet);
+        up = findViewById(R.id.imageButton);
+        right =findViewById(R.id.imageButton3);
+        left =findViewById(R.id.imageButton2);
+        dowen =findViewById(R.id.imageButton4);
+        spinner =findViewById(R.id.speedSet);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -63,12 +61,12 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinner.setOnItemSelectedListener(this);
 
 
         new ConnectBT().execute();
 
-        up.setOnTouchListener(new View.OnTouchListener() {
+        up.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch(event.getAction()) {
@@ -88,7 +86,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         });
 
 
-        left.setOnTouchListener(new View.OnTouchListener() {
+        left.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch(event.getAction()) {
@@ -108,7 +106,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         });
 
 
-        right.setOnTouchListener(new View.OnTouchListener() {
+        right.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch(event.getAction()) {
@@ -128,7 +126,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         });
 
 
-        dowen.setOnTouchListener(new View.OnTouchListener() {
+        dowen.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch(event.getAction()) {
@@ -194,7 +192,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
     private void sendSignal ( String number ) {
         if ( btSocket != null ) {
             try {
-                btSocket.getOutputStream().write(number.toString().getBytes());
+                btSocket.getOutputStream().write(number.getBytes());
             } catch (IOException e) {
                 msg("Error");
             }
@@ -228,6 +226,7 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private  class ConnectBT extends AsyncTask<Void, Void, Void> {
         private boolean ConnectSuccess = true;
 
@@ -236,8 +235,8 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         @Override
         protected  void onPreExecute () {
 
-            progress = ProgressDialog.show(Move.this, "Connecting...", "Please Wait!!!");
-;
+            progress = ProgressDialog.show(Move.this, "Connecting to the device...", "Please Wait!");
+
         }
 
         @Override
@@ -264,10 +263,10 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
             super.onPostExecute(result);
 
             if (!ConnectSuccess) {
-                msg("Bluetooth not on");
+                msg("Please,turn on Bluetooth on Your Mobile and Power On The Chair");
                 finish();
             } else {
-                msg("Connected");
+                msg("Connected,Let's Move.");
                 isBtConnected = true;
             }
 

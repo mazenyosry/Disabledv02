@@ -51,7 +51,8 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="15dp"
-                        android:textSize="18dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="18sp"
                         android:text="Name"
                         android:textStyle="bold"
                         />
@@ -60,7 +61,8 @@
                         android:layout_height="25dp"
                         android:textColor="#000000"
                         android:text="Email"
-                        android:textSize="18dp"
+                        android:layout_marginLeft="25dp"
+                        android:textSize="18sp"
                         android:textStyle="italic"
 
                         />
@@ -106,7 +108,8 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="15dp"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp"
                         android:text="Name"
                         android:textStyle="bold"
                         />
@@ -114,8 +117,9 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:textColor="#000000"
+                        android:layout_marginLeft="25dp"
                         android:text="Email"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="italic"
 
                         />
@@ -163,7 +167,8 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="15dp"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="15dp"
                         android:text="Name"
                         android:textStyle="bold"
                         />
@@ -171,8 +176,9 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:textColor="#000000"
+                        android:layout_marginLeft="20dp"
                         android:text="Email"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="italic"
 
                         />
@@ -218,7 +224,8 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="15dp"
-                        android:textSize="18dp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="18sp"
                         android:text="Name"
                         android:textStyle="bold"
                         />
@@ -226,8 +233,9 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:textColor="#000000"
+                        android:layout_marginLeft="25dp"
                         android:text="Email"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="italic"
 
                         />

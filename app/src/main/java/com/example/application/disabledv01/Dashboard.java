@@ -8,7 +8,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -43,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
         SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("a","1");
-        editor.commit();
+        editor.apply();
         Intent LogOut = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(LogOut);
         finish();

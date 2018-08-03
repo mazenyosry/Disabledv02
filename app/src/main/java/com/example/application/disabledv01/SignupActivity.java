@@ -2,7 +2,6 @@ package com.example.application.disabledv01;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -41,6 +39,8 @@ public class SignupActivity extends AppCompatActivity {
     @BindView(R.id.rinput_password) EditText _rpasswordText;
     @BindView(R.id.btn_signup) Button _signupButton;
     @BindView(R.id.link_login) TextView _loginLink;
+    private ProgressDialog progress;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    Toast.makeText(SignupActivity.this,"plese connect to the internet",Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupActivity.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -99,7 +99,7 @@ public class SignupActivity extends AppCompatActivity {
 
     public void InsertData(final String name, final String email, final String password){
 
-        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
             @Override
             protected String doInBackground(String... params) {
 
@@ -125,8 +125,6 @@ public class SignupActivity extends AppCompatActivity {
                     HttpEntity httpEntity = httpResponse.getEntity();
 
 
-                } catch (ClientProtocolException e) {
-
                 } catch (IOException e) {
 
                 }
@@ -138,7 +136,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 super.onPostExecute(result);
 
-                Toast.makeText(SignupActivity.this, "Data Submit Successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignupActivity.this, "You Have Signed up Successfully , Your Data Is Secured.", Toast.LENGTH_LONG).show();
 
             }
         }
@@ -158,11 +156,10 @@ public class SignupActivity extends AppCompatActivity {
 
         _signupButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
-                R.style.AppTheme_Dark);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
+
+
+        progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait, I am authenticating and saving your data .");
+
 
 
         // TODO: Implement your own signup logic here.
@@ -174,7 +171,7 @@ public class SignupActivity extends AppCompatActivity {
                         // depending on success
                         onSignupSuccess();
                         // onSignupFailed();
-                        progressDialog.dismiss();
+                        progress.dismiss();
                     }
                 }, 3000);
     }
@@ -187,7 +184,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "sigu up failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Sorry , there is an error on signing up .. please check the data you entered", Toast.LENGTH_LONG).show();
 
         _signupButton.setEnabled(true);
     }
@@ -205,28 +202,28 @@ public class SignupActivity extends AppCompatActivity {
         String rpassword=_rpasswordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("at least 3 characters");
+            _nameText.setError("Name must contain at least 3 characters");
             valid = false;
         } else {
             _nameText.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            _emailText.setError("Please,Enter a valid email address form");
             valid = false;
         } else {
             _emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+            _passwordText.setError("Password must be between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);
         }
 
         if (rpassword.isEmpty() || ! rpassword.equals(password)) {
-            _rpasswordText.setError("password is not equal ");
+            _rpasswordText.setError("Sorry,Passwords are not the same");
             valid = false;
         } else {
             _rpasswordText.setError(null);

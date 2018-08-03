@@ -15,7 +15,7 @@ public class About extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        final ProSwipeButton proSwipeBtn = (ProSwipeButton) findViewById(R.id.awesome_btn);
+        final ProSwipeButton proSwipeBtn = findViewById(R.id.awesome_btn);
 
         proSwipeBtn.setOnSwipeListener(new ProSwipeButton.OnSwipeListener() {
             @Override

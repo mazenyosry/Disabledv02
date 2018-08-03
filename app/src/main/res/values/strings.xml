@@ -1,5 +1,17 @@
 <resources>
-    <string name="app_name">Disabled v0.1</string>
+    <string name="app_name">E-Wheel</string>
+    <string name="HowToUseApp">First, Power on the Chair.\n Second, turn on the bluetooth and the application will connect automatically to the chair.\n
+        Third , you should turn on LocationServices (GPS) from your mobile device settings.
+    </string>
+    <string name="HowToControlChair">First, press on \' Move \' from your main dashboard.\n  -You will see directions .\n  -To move press on the direction arrows.</string>
+    <string name="ControllingSpeed">Open \' Move \' to be connected and from the top right corner you will see the dropdown scroll to choose your desired speed to move with , this speed also will be saved to move with it from the hand kit.\n - You have 4 different speeds to choose from.</string>
+    <string name="BatteryPercentage">First, press on \' Battery \' from your main dashboard.\n  -You will see the live remainig battery percentage of the chair . </string>
+    <string name="HandkitUsage">First, Power on the Chair.\n Second, Power on the Handkit. \n -Handkit will automatically connect to the chair.\n -Start using the Handkit Tattoo to move the chair to the desired direction.</string>
+    <string name="HandKitQ">How to use handkit?</string>
+    <string name="BatteryPercentageQ">How to see the chair\'s remaining Battery percentage ?</string>
+    <string name="ChairSpeedQ">How to change chair speed?</string>
+    <string name="ControlChairQ">How to control the chair with the app ?</string>
+    <string name="UseTheAppQ">How to use the app ?</string>
 
     <string-array name="Speeds" >
         <item>Select Speed</item>

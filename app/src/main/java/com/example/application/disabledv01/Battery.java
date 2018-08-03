@@ -1,7 +1,6 @@
 package com.example.application.disabledv01;
 
 
-import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -10,16 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -35,8 +32,6 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.Set;
 import java.util.UUID;
-
-import static com.example.application.disabledv01.Move.myUUID;
 
 public class Battery extends AppCompatActivity {
 
@@ -61,7 +56,7 @@ public class Battery extends AppCompatActivity {
     String name ="hc01.com HC-05";
     boolean threadcheck= true;
 
-    private final String TAG = Blotooth.class.getSimpleName();
+    private final String TAG = Battery.class.getSimpleName();
     private Handler mHandler; // Our main handler that will receive callback notifications
     private ConnectedThread mConnectedThread; // bluetooth background worker thread to send and receive data
     private BluetoothSocket mBTSocket = null; // bi-directional client-to-client data path
@@ -94,7 +89,6 @@ public class Battery extends AppCompatActivity {
 
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
 
-        mDevicesListView = (ListView)findViewById(R.id.devicesListView);
 
         // Ask for location permission if not already allowed
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
