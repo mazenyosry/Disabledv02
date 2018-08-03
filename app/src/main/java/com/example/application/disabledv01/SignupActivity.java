@@ -93,6 +93,10 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+
+
+    ////////////////////////Insert data//////////////////////////////////////
+
     public void InsertData(final String name, final String email, final String password){
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
@@ -187,6 +191,10 @@ public class SignupActivity extends AppCompatActivity {
 
         _signupButton.setEnabled(true);
     }
+
+
+
+    //////////////////////////////////Validation////////////////////////
 
     public boolean validate() {
         boolean valid = true;

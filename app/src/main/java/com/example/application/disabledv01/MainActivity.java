@@ -36,21 +36,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void start(View v){
-//        SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
-//
-//        String test =sharedPreferences.getString("a","1");
-//                if(test.equals("1")) {
-//                    Intent s = new Intent(MainActivity.this, Gif.class);
-//                    startActivity(s);
-//                    finish();
-//                }
-//                if (test.equals("2"))
-//                {
-//                    Intent s = new Intent(MainActivity.this, Dashboard.class);
-//                    startActivity(s);
-//                    finish();
-//                }
-//    }
 
 }

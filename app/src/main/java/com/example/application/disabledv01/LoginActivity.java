@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(true);
     }
-
+/////////////////////////////////////////Validation////////////////////////////
     public boolean validate() {
         boolean valid = true;
 
@@ -174,6 +174,11 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+    /////////////////////////////////////////Upload Data///////////////////////////////////////////
+
+
+
 
     String result = "";
     public class MyAsyncTaskresources extends AsyncTask<String, String, String> {
