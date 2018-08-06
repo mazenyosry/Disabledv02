@@ -13,14 +13,13 @@
     <string name="ControlChairQ">How to control the chair with the app ?</string>
     <string name="UseTheAppQ">How to use the app ?</string>
 
-    <string-array name="Speeds" >
+    <string-array name="Speeds">
         <item>Select Speed</item>
         <item>Speed 1</item>
         <item>Speed 2</item>
         <item>Speed 3</item>
         <item>Speed 4</item>
     </string-array>
-
 
 
 </resources>

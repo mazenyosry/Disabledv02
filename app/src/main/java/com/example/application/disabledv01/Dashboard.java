@@ -55,5 +55,10 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
+    public void profile (View v){
+        Intent prof= new Intent(this,Profile.class);
+        startActivity(prof);
+
+    }
 
 }

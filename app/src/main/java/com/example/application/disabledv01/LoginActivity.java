@@ -270,6 +270,8 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = getSharedPreferences("acs", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("a", "2");
+                    editor.putString("email",_emailText.getText().toString());
+                    editor.putString("password",_passwordText.getText().toString());
                     editor.apply();
                     logincheck = false;
                     Intent in = new Intent(getApplicationContext(), Dashboard.class);
