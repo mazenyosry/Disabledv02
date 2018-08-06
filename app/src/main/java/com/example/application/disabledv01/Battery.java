@@ -370,28 +370,6 @@ public class Battery extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        co();
-//    }
-
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if(!mBTAdapter.isEnabled()) {
-//
-//            return;
-//        }
-//
-//        else {
-//
-//            co();
-//
-//
-//        }
-//    }
 
 }
 

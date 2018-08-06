@@ -69,10 +69,7 @@
                         android:textStyle="italic" />
 
 
-
                 </LinearLayout>
-
-
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -129,14 +126,8 @@
 
 
                 </LinearLayout>
-
-
-
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
-
-
         <android.support.v7.widget.CardView
             android:layout_width="330dp"
             android:layout_height="100dp"
@@ -185,13 +176,7 @@
                         android:textSize="18sp"
 
                         android:textStyle="italic" />
-
-
-
                 </LinearLayout>
-
-
-
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

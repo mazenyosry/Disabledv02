@@ -136,8 +136,6 @@
                     android:clickable="true"
                     android:onClick="battery"
                     tools:ignore="OnClick">
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -176,8 +174,6 @@
                             android:textColor="@color/maincolor" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
-
-
                 <android.support.v7.widget.CardView
                     android:layout_width="160dp"
                     android:layout_height="190dp"
@@ -199,7 +195,6 @@
                             android:background="@drawable/circlebackgroundyellow"
                             android:padding="10dp"
                             android:src="@drawable/ic_group_black_24dp" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -207,13 +202,11 @@
                             android:text="About Us"
                             android:textColor="@color/maincolor"
                             android:textStyle="bold" />
-
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_margin="10dp"
                             android:background="@color/maincolor" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -223,9 +216,7 @@
                             android:textColor="@color/maincolor" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
-
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -241,7 +232,6 @@
                     android:clickable="true"
                     android:onClick="help"
                     tools:ignore="OnClick">
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
