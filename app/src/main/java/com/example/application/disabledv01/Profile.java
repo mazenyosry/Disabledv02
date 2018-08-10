@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -47,6 +48,8 @@ public class Profile extends AppCompatActivity {
     TextView email_tx, name_tx, Id_tx, Location_tx;
     LocationManager lm;
     Location location;
+    Criteria criteria;
+    LocationManager locationManager;
     double longitude, latitude;
     boolean gps_enabled = false;
     private int RESULT_LOAD_IMAGE = 123;
@@ -58,7 +61,11 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Location_tx = (TextView) findViewById(R.id.profile_Location);
+        locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+         criteria = new Criteria();
+
+
+        Location_tx = findViewById(R.id.profile_Location);
         cd= new ConnectionDetector(this);
 
 
@@ -136,9 +143,12 @@ public class Profile extends AppCompatActivity {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         } catch (Exception ex) {
         }
-        if (gps_enabled) {
+        if (gps_enabled && location!=null) {
+
+            String provider = locationManager.getBestProvider(criteria, true);
+            Location location = locationManager.getLastKnownLocation(provider);
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
-            location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+           location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             longitude = location.getLongitude();
             latitude = location.getLatitude();
 

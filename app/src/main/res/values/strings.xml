@@ -12,6 +12,7 @@
     <string name="ChairSpeedQ">How to change chair speed?</string>
     <string name="ControlChairQ">How to control the chair with the app ?</string>
     <string name="UseTheAppQ">How to use the app ?</string>
+    <string name="percentage">Live Percentage of Your Chair Battery Remaining.</string>
 
     <string-array name="Speeds">
         <item>Select Speed</item>
