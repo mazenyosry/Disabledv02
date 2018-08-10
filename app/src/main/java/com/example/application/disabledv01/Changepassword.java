@@ -52,12 +52,12 @@ public class Changepassword extends AppCompatActivity {
 
 
             if (validate()) {
-                final ProgressDialog progress = new ProgressDialog(this);
-                progress.setTitle("Connecting");
-                progress.setMessage("Please wait while we connect to devices...");
-                progress.show();
-                if (oldpass.getText().toString().equals(password_)) {
 
+                if (oldpass.getText().toString().equals(password_)) {
+                    final ProgressDialog progress = new ProgressDialog(this);
+                    progress.setTitle("Connecting");
+                    progress.setMessage("Please wait while we connect to devices...");
+                    progress.show();
                     if (newpass.getText().toString().equals(renewpass.getText().toString())) {
 
 
