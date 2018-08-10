@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
-                android:fontFamily="@font/loveland"
+                android:fontFamily="@font/"
                 android:hint="Password"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
@@ -77,6 +77,8 @@
             android:gravity="center"
             android:text="No account yet? Create one"
             android:textSize="16dip" />
+
+
 
     </LinearLayout>
 </ScrollView>
