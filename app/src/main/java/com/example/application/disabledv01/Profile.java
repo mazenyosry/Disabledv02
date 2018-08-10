@@ -1,6 +1,5 @@
 package com.example.application.disabledv01;
 
-import android.*;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +15,10 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -64,7 +63,7 @@ public class Profile extends AppCompatActivity {
 
 
         if (cd.isConnected()) {
-            ;
+
         }
         else {
             Toast.makeText(Profile.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();

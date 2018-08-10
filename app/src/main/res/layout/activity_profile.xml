@@ -158,7 +158,7 @@
                     android:textColor="#000000"
                     android:textSize="18dp"
 
-                    android:textStyle="italic" />
+                    />
 
             </LinearLayout>
 
@@ -205,13 +205,15 @@
                         android:textColor="#000000"
                         android:textSize="18dp"
                         android:textStyle="bold" />
+
                     <ImageButton
+                        android:id="@+id/imageselector"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:src="@drawable/ic_edit_img"
+                        android:layout_marginLeft="50dp"
                         android:background="@color/backgroundcolor"
                         android:onClick="editPassword"
-                        android:layout_marginLeft="50dp"
+                        android:src="@drawable/ic_edit_img"
                         tools:ignore="OnClick" />
                 </LinearLayout>
 
@@ -221,8 +223,7 @@
                     android:fontFamily="@font/loveland"
                     android:text="Password"
                     android:textColor="#000000"
-                    android:textSize="18dp"
-                    android:textStyle="italic" />
+                    android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

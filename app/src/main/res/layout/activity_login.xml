@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:fontFamily="@font/loveland"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textAllCaps="false" />
@@ -50,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
-                android:fontFamily="@font/"
+                android:fontFamily="@font/loveland"
                 android:hint="Password"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
@@ -62,6 +63,7 @@
             android:layout_marginBottom="24dp"
             android:layout_marginTop="120dp"
             android:background="@drawable/buttonstyle"
+            android:fontFamily="@font/loveland"
             android:padding="12dp"
             android:text="Login"
             android:textAllCaps="false"

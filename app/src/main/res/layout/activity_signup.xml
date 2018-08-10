@@ -33,8 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:hint=" Name"
+                android:fontFamily="@font/loveland"
 
+                android:hint=" Name"
                 android:inputType="textCapWords" />
         </android.support.design.widget.TextInputLayout>
 
@@ -44,12 +45,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
+
+            <EditText
+                android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
-                android:hint="Email" />
+                android:fontFamily="@font/loveland"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
@@ -72,31 +76,39 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/rinput_password"
+
+            <EditText
+                android:id="@+id/rinput_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                android:fontFamily="@font/loveland"
                 android:hint="Re-enter Password"
-                android:drawableLeft="@drawable/ic_vpn_key_black_24dp" />
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_signup"
-            android:background="@drawable/buttonstyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:background="@drawable/buttonstyle"
+            android:fontFamily="@font/loveland"
             android:padding="12dp"
-            android:text="Create Account"/>
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
 
-        <TextView android:id="@+id/link_login"
+        <TextView
+            android:id="@+id/link_login"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Already a member? Login"
+            android:fontFamily="@font/loveland"
             android:gravity="center"
-            android:textSize="16dip"/>
+            android:text="Already a member? Login"
+            android:textSize="16dip" />
 
     </LinearLayout>
 </ScrollView>

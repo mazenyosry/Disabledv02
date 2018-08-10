@@ -33,16 +33,15 @@
                     android:orientation="vertical">
 
 
-
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/loveland"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:textSize="40sp"
                         android:text="Dashboard "
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="40sp" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -84,9 +83,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="Profile"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
 
                         <View
                             android:layout_width="match_parent"
@@ -97,6 +96,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="Check your profile "
@@ -130,9 +130,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="Move"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
 
                         <View
                             android:layout_width="match_parent"
@@ -143,6 +143,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="5dp"
                             android:text="Move The Chair.."
@@ -186,9 +187,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="Battery"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
 
                         <View
                             android:layout_width="match_parent"
@@ -199,6 +200,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="1dp"
                             android:text="Live Percentage of Your Chair Battery Remaining. "
@@ -226,21 +228,24 @@
                             android:background="@drawable/circlebackgroundyellow"
                             android:padding="10dp"
                             android:src="@drawable/ic_group_black_24dp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="About Us"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_margin="10dp"
                             android:background="@color/black" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="1dp"
                             android:text="Our information and ways To Reach Us"
@@ -282,9 +287,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="Help"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
 
                         <View
                             android:layout_width="match_parent"
@@ -295,6 +300,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="1dp"
                             android:text="Provide help  "
@@ -327,9 +333,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:fontFamily="@font/loveland"
                             android:text="Signout"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black" />
 
                         <View
                             android:layout_width="match_parent"
@@ -340,6 +346,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/loveland"
                             android:gravity="center"
                             android:padding="1dp"
                             android:text="Signout from this account"

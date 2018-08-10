@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 
-
 public class BatteryProgressView extends View {
     private int width,height;
     private int x=0,y=0;
@@ -62,6 +61,8 @@ public class BatteryProgressView extends View {
 
         textPaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setColor(textColor);
+
+
 
         percentagePaint=new Paint(Paint.ANTI_ALIAS_FLAG);
         percentagePaint.setColor(textColor);
