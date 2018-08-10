@@ -49,8 +49,6 @@ public class SignupActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         cd= new ConnectionDetector(this);
 
-
-
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,9 +90,6 @@ public class SignupActivity extends AppCompatActivity {
         Temppassword = _passwordText.getText().toString();
 
     }
-
-
-
     ////////////////////////Insert data//////////////////////////////////////
 
     public void InsertData(final String name, final String email, final String password){
@@ -155,9 +150,6 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         _signupButton.setEnabled(false);
-
-
-
         progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait, I am authenticating and saving your data .");
 
 
@@ -176,7 +168,6 @@ public class SignupActivity extends AppCompatActivity {
                 }, 3000);
     }
 
-
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
@@ -188,9 +179,6 @@ public class SignupActivity extends AppCompatActivity {
 
         _signupButton.setEnabled(true);
     }
-
-
-
     //////////////////////////////////Validation////////////////////////
 
     public boolean validate() {

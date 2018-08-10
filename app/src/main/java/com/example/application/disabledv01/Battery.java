@@ -1,6 +1,7 @@
 package com.example.application.disabledv01;
 
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -8,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,9 +36,6 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Battery extends AppCompatActivity {
-
-
-
 
 
     // GUI Components
@@ -68,23 +67,24 @@ public class Battery extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1; // used to identify adding bluetooth names
     private final static int MESSAGE_READ = 2; // used in bluetooth handler to identify message update
     private final static int CONNECTING_STATUS = 3; // used in bluetooth handler to identify message status
+    UpdataData updataData=new UpdataData();
 
 
     BatteryProgressView progres;
-    EditText valueE;
-    Button valuebt;
 
 
 
 
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battery);
         progres=  findViewById(R.id.progress);
-        valueE = findViewById(R.id.valueET);
-        valuebt = findViewById(R.id.valuebtn);
 
+        SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
+        final String email_ =sharedPreferences.getString("email","1");
+        String password_ =sharedPreferences.getString("password","1");
 
 
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
@@ -107,7 +107,12 @@ public class Battery extends AppCompatActivity {
             co();
 
 
-             }
+
+
+
+
+        }
+
 
         mHandler = new Handler(){
             public void handleMessage(android.os.Message msg){
@@ -118,14 +123,31 @@ public class Battery extends AppCompatActivity {
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    valueE.setText(readMessage);
+
+
+
+//                    vla = Integer.parseInt(readMessage);
+                    progres.setProgress(readMessage);
+
+
+                    String s = readMessage.replaceAll(" ","");
+                    updataData.execute("http://hti-project.000webhostapp.com/model/battary.php?email="+email_+"&battery="+s);
+                    Toast.makeText(getBaseContext(),s, Toast.LENGTH_SHORT).show();
+
+
+
+
                 }
 
                 if(msg.what == CONNECTING_STATUS){
                     if(msg.arg1 == 1)
-                        valueE.setText("Connected to Device: " + (String)(msg.obj));
+//                        valueE.setText("Connected to Device: " + (String)(msg.obj));
+                        ;
                     else
-                       valueE.setText("Connection Failed");
+//                       valueE.setText("Connection Failed");
+
+                        Toast.makeText(getBaseContext(), "Chaire not on", Toast.LENGTH_SHORT).show();
+
                 }
             }
         };
@@ -140,23 +162,10 @@ public class Battery extends AppCompatActivity {
 
 
 
-    public void setvaluee(View v){
-        int val;
-        val = Integer.parseInt(String.valueOf(valueE.getText()));
-        progres.setProgress(val);
-        if(mConnectedThread != null) //First check to make sure thread created
-            mConnectedThread.write("5");
-
-    }
-
-
-
-
     private void bluetoothOn(){
         if (!mBTAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            valueE.setText("Bluetooth enabled");
             Toast.makeText(getApplicationContext(),"Bluetooth turned on",Toast.LENGTH_SHORT).show();
 
         }
@@ -174,11 +183,9 @@ public class Battery extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // The user picked a contact.
                 // The Intent's data Uri identifies which contact was selected.
-                valueE.setText("Enabled");
-            }
+;            }
             else
-                valueE.setText("Disabled");
-        }
+;        }
     }
 
     private void bluetoothOff(View view){
@@ -274,6 +281,9 @@ public class Battery extends AppCompatActivity {
                     mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
                             .sendToTarget();
                 }
+
+                if(mConnectedThread != null) //First check to make sure thread created
+                    mConnectedThread.write("5");
             }
         }.start();
     }

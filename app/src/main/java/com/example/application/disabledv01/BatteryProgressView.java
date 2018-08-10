@@ -162,9 +162,9 @@ public class BatteryProgressView extends View {
         return progress;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(String progress) {
         lastProgress=this.progress;
-        this.progress = progress;
+        this.progress = Float.parseFloat(progress);
         post(new Runnable() {
             @Override
             public void run() {

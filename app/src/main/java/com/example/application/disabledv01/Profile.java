@@ -1,6 +1,7 @@
 package com.example.application.disabledv01;
 
 import android.*;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,7 +45,7 @@ public class Profile extends AppCompatActivity {
     String ServerURL = "http://hti-project.000webhostapp.com/model/signup.php";
 
     ImageView imageView;
-    TextView Email_tx, Name_tx, Id_tx, Location_tx;
+    TextView email_tx, name_tx, Id_tx, Location_tx;
     LocationManager lm;
     Location location;
     double longitude, latitude;
@@ -52,12 +53,22 @@ public class Profile extends AppCompatActivity {
     private int RESULT_LOAD_IMAGE = 123;
     private String PREFS_NAME = "image";
     private Context mContext;
+    ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Location_tx = (TextView) findViewById(R.id.profile_Location);
+        cd= new ConnectionDetector(this);
+
+
+        if (cd.isConnected()) {
+            ;
+        }
+        else {
+            Toast.makeText(Profile.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();
+        }
 
         try {
             mContext = this;
@@ -84,8 +95,6 @@ public class Profile extends AppCompatActivity {
 
 
 
-
-
         new MyAsyncTaskresources().execute("http://hti-project.000webhostapp.com/model/login.php?email="+email_+"&password="+password_);
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -95,8 +104,8 @@ public class Profile extends AppCompatActivity {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
+            //  public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //  int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
             return;
@@ -108,7 +117,6 @@ public class Profile extends AppCompatActivity {
                 longitude = location.getLongitude();
                 latitude = location.getLatitude();
             }
-
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 
@@ -124,15 +132,11 @@ public class Profile extends AppCompatActivity {
 
             }
         };
-
-
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         } catch (Exception ex) {
         }
-
-
         if (gps_enabled) {
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
             location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
@@ -192,52 +196,49 @@ public class Profile extends AppCompatActivity {
 
     }
 
-
-
-
-    //*****************************Get json data*******************
-    String result = "";
-
     public void editPassword(View view) {
 
-        ;
+        Intent changepASS= new Intent(this,Changepassword.class);
+        startActivity(changepASS);
     }
 
 
-    public class MyAsyncTaskresources extends AsyncTask<String, String, String> {
-        public String s = "";
-        public String d = "";
-        public String f = "";
 
+    /////////////////////////////////////////Upload Data///////////////////////////////////////////
+    String result = "";
+    @SuppressLint("StaticFieldLeak")
+    public class MyAsyncTaskresources extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
 
         }
-
         @Override
-        protected String doInBackground(String... params) {
+        protected String  doInBackground(String... params) {
 
 
             InputStream isr = null;
 
-            try {
-                String URL = params[0];
-                java.net.URL url = new URL(URL);
+            try{
+                String URL=params[0];
+                java.net.URL url = new URL( URL);
                 URLConnection urlConnection = url.openConnection();
-                isr = new BufferedInputStream(urlConnection.getInputStream());
+                isr  = new BufferedInputStream(urlConnection.getInputStream());
 
-            } catch (Exception e) {
+            }
+
+            catch(Exception e){
 
                 Log.e("log_tag", "Error in http connection " + e.toString());
+
 
 
             }
 
 //convert response to string
 
-            try {
+            try{
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "iso-8859-1"), 8);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(isr,"iso-8859-1"),8);
 
                 StringBuilder sb = new StringBuilder();
 
@@ -251,9 +252,11 @@ public class Profile extends AppCompatActivity {
 
                 isr.close();
 
-                result = sb.toString();
+                result=sb.toString();
 
-            } catch (Exception e) {
+            }
+
+            catch(Exception e){
 
                 Log.e("log_tag", "Error  converting result " + e.toString());
 
@@ -265,8 +268,13 @@ public class Profile extends AppCompatActivity {
             return null;
         }
 
-        protected void onPostExecute(String result2) {
+        protected void onPostExecute(String  result2) {
             try {
+
+                String s = "";
+                String l = "";
+
+
 
 
                 JSONArray jArray = new JSONArray(result);
@@ -275,36 +283,41 @@ public class Profile extends AppCompatActivity {
 
                     JSONObject json = jArray.getJSONObject(i);
 
-                    s = json.getString("user_img");
-                    d = json.getString("user_name");
-                    f = json.getString("user_email");
+                    s = json.getString("user_name");
+                    l = json.getString("user_email");
+                    name_tx = (TextView) findViewById(R.id.profile_NAme);
+                    email_tx = (TextView) findViewById(R.id.profile_Email);
+                    name_tx.setText(s);
+                    email_tx.setText(l);
+
+
+
+
+
+
 
 
                     break;
-                }
-
-                if (s.length() > 0) {
-
-                    TextView txtname = (TextView) findViewById(R.id.profile_NAme);
-                    TextView txtemail = (TextView) findViewById(R.id.profile_Email);
-                    txtname.setText(d);
-                    txtemail.setText(f);
-
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "user name or password isnot correct", Toast.LENGTH_LONG).show();
 
                 }
 
 
-            } catch (Exception e) {
+
+
+
+            }
+            catch (Exception e) {
 
 // TODO: handle exception
 
-                Log.e("log_tag", "Error Parsing Data " + e.toString());
+                Log.e("log_tag", "Error Parsing Data "+e.toString());
 
             }
+
+
         }
+
+
 
 
     }

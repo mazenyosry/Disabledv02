@@ -199,9 +199,6 @@ public class Move extends AppCompatActivity implements AdapterView.OnItemSelecte
         }
     }
 
-
-
-
     private void Disconnect () {
         if ( btSocket!=null ) {
             try {

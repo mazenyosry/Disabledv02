@@ -18,25 +18,7 @@
         android:layout_centerVertical="true" />
 
 
-    <EditText
-        android:id="@+id/valueET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="number" />
 
-    <Button
-        android:id="@+id/valuebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/progress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
-        android:onClick="setvaluee"
-        android:text="Set Value" />
 
 
 </RelativeLayout>
