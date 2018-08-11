@@ -66,6 +66,7 @@ public class Profile extends AppCompatActivity {
     private Uri filePath;
     UpdataData updataData=new UpdataData();
     String email_;
+    String password_;
     String city;
     String state;
     String stlocation;
@@ -76,10 +77,9 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         imageView = findViewById(R.id.profile_image);
-
         SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
         email_ =sharedPreferences.getString("email","1");
-        String password_ =sharedPreferences.getString("password","1");
+         password_ =sharedPreferences.getString("password","1");
 
 
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -184,14 +184,15 @@ public class Profile extends AppCompatActivity {
 
 
     }
+    
 
 
     public void setImg(View view) {
 
 
         try {
-            mContext = this;
-            String path = getPreference(mContext, "imagePath");
+//            mContext = this;
+//            String path = getPreference(mContext, "imagePath");
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -359,7 +360,12 @@ public class Profile extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
                 uploadImage();
-            } catch (IOException e) {
+                new MyAsyncTaskresources().execute("http://hti-project.000webhostapp.com/model/login.php?email="+email_+"&password="+password_);
+
+
+            }
+
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -414,12 +420,12 @@ public class Profile extends AppCompatActivity {
     }
 
 
-    String getPreference(Context c, String key) {
-        SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
-        settings = c.getSharedPreferences(PREFS_NAME, 0);
-        String value = settings.getString(key, "");
-        return value;
-    }
+//    String getPreference(Context c, String key) {
+//        SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
+//        settings = c.getSharedPreferences(PREFS_NAME, 0);
+//        String value = settings.getString(key, "");
+//        return value;
+//    }
 
 
 
