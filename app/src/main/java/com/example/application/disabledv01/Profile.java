@@ -1,13 +1,12 @@
 package com.example.application.disabledv01;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -20,47 +19,61 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 public class Profile extends AppCompatActivity {
 
-    String ServerURL = "http://hti-project.000webhostapp.com/model/signup.php";
 
     ImageView imageView;
     TextView email_tx, name_tx, Id_tx, Location_tx;
     LocationManager lm;
     Location location;
     Criteria criteria;
+    private int PICK_IMAGE_REQUEST = 1;
     LocationManager locationManager;
     double longitude, latitude;
     boolean gps_enabled = false;
-    private int RESULT_LOAD_IMAGE = 123;
+    public static final String UPLOAD_KEY = "image";
     private String PREFS_NAME = "image";
     private Context mContext;
     ConnectionDetector cd;
+    private Bitmap bitmap;
+    private Uri filePath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        imageView = findViewById(R.id.profile_image);
+
+
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
          criteria = new Criteria();
 
@@ -74,22 +87,6 @@ public class Profile extends AppCompatActivity {
         }
         else {
             Toast.makeText(Profile.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();
-        }
-
-        try {
-            mContext = this;
-            imageView = findViewById(R.id.profile_image);
-            String path = getPreference(mContext, "imagePath");
-
-            if (path == null || path.length() == 0 || path.equalsIgnoreCase("")) {
-            ;
-
-            } else {
-                imageView.setImageBitmap(getScaledBitmap(path, 800, 800));
-            }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
 
 
@@ -189,13 +186,11 @@ public class Profile extends AppCompatActivity {
 
         try {
             mContext = this;
-            imageView = findViewById(R.id.profile_image);
             String path = getPreference(mContext, "imagePath");
-
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
 
 
         } catch (Exception e) {
@@ -282,6 +277,8 @@ public class Profile extends AppCompatActivity {
 
                 String s = "";
                 String l = "";
+                String photo="";
+
 
 
 
@@ -294,11 +291,20 @@ public class Profile extends AppCompatActivity {
 
                     s = json.getString("user_name");
                     l = json.getString("user_email");
+                    photo=json.getString("user_img");
                     name_tx = (TextView) findViewById(R.id.profile_NAme);
                     email_tx = (TextView) findViewById(R.id.profile_Email);
                     name_tx.setText(s);
                     email_tx.setText(l);
-
+                    Glide.with(Profile.this)
+                            .asBitmap()
+                            .load(photo)
+                            .into(new SimpleTarget<Bitmap>() {
+                                @Override
+                                public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                    imageView.setImageBitmap(resource);
+                                }
+                            });
 
 
 
@@ -338,87 +344,71 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        try {
-            if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK
-                    && null != data) {
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.moveToFirst();
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-                setPreference(mContext, picturePath, "imagePath");
-                imageView
-                        .setImageBitmap(getScaledBitmap(picturePath, 800, 800));
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            filePath = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+                uploadImage();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
     }
 
-    private Bitmap getScaledBitmap(String picturePath, int width, int height) {
-        BitmapFactory.Options sizeOptions = null;
-        try {
-            sizeOptions = new BitmapFactory.Options();
-            sizeOptions.inJustDecodeBounds = true;
-            BitmapFactory.decodeFile(picturePath, sizeOptions);
 
-            int inSampleSize = calculateInSampleSize(sizeOptions, width, height);
 
-            sizeOptions.inJustDecodeBounds = false;
-            sizeOptions.inSampleSize = inSampleSize;
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return BitmapFactory.decodeFile(picturePath, sizeOptions);
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
     }
 
-    private int calculateInSampleSize(BitmapFactory.Options options,
-                                      int reqWidth, int reqHeight) {
-        int inSampleSize = 0;
-        try {
-            // Raw height and width of image
-            final int height = options.outHeight;
-            final int width = options.outWidth;
-            inSampleSize = 1;
+    private void uploadImage() {
+        class UploadImage extends AsyncTask<Bitmap, Void, String> {
 
-            if (height > reqHeight || width > reqWidth) {
+            ProgressDialog loading;
+            RequestHandler rh = new RequestHandler();
 
-                // Calculate ratios of height and width to requested height and
-                // width
-                final int heightRatio = Math.round((float) height
-                        / (float) reqHeight);
-                final int widthRatio = Math.round((float) width
-                        / (float) reqWidth);
-
-                // Choose the smallest ratio as inSampleSize value, this will
-                // guarantee
-                // a final image with both dimensions larger than or equal to
-                // the
-                // requested height and width.
-                inSampleSize = heightRatio < widthRatio ? heightRatio
-                        : widthRatio;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(Profile.this, "Uploading...", null, true, true);
             }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(Bitmap... params) {
+                SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
+                String email_ =sharedPreferences.getString("email","1");
+                String password_ =sharedPreferences.getString("password","1");
+
+                Bitmap bitmap = params[0];
+                String uploadImage = getStringImage(bitmap);
+
+                HashMap<String, String> data = new HashMap<>();
+
+                data.put(UPLOAD_KEY, uploadImage);
+                String result = rh.sendPostRequest("https://hti-project.000webhostapp.com/model/update.php?email="+email_, data);
+
+                return result;
+            }
         }
 
-        return inSampleSize;
+        UploadImage ui = new UploadImage();
+        ui.execute(bitmap);
     }
 
-    boolean setPreference(Context c, String value, String key) {
-        SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
-        settings = c.getSharedPreferences(PREFS_NAME, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(key, value);
-        return editor.commit();
-    }
 
     String getPreference(Context c, String key) {
         SharedPreferences settings = c.getSharedPreferences(PREFS_NAME, 0);
