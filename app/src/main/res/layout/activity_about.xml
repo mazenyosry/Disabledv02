@@ -37,7 +37,7 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/ic_person_outline_black_24dp"
+                    android:src="@drawable/hoda"
 
 
                     />
@@ -55,7 +55,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/loveland"
-                        android:text="Name"
+                        android:text="Mahmoud Youssef"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -63,10 +63,10 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginLeft="25dp"
-                        android:fontFamily="@font/loveland"
-                        android:text="Email"
+                        android:fontFamily="sans-serif"
+                        android:text="Mahmoudyoussef641@yahoo.com"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
 
                         android:textStyle="italic" />
 
@@ -94,7 +94,7 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/ic_person_outline_black_24dp"
+                    android:background="@drawable/alaa"
                     />
 
                 <LinearLayout
@@ -110,7 +110,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/loveland"
-                        android:text="Name"
+                        android:text="Alaa Abdelaziz Mohamed"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -118,12 +118,12 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginLeft="25dp"
-                        android:fontFamily="@font/loveland"
-                        android:text="Email"
+                        android:fontFamily="sans-serif"
+                        android:text="alaa.abdel.aziz@outlook.com"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
 
-                        android:textStyle="italic" />
+                        />
 
 
 
@@ -148,7 +148,7 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/ic_person_outline_black_24dp"
+                    android:background="@drawable/sasa"
                     />
 
                 <LinearLayout
@@ -164,7 +164,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/loveland"
-                        android:text="Name"
+                        android:text="Ahmed Moustafa Taha"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -172,12 +172,12 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginLeft="20dp"
-                        android:fontFamily="@font/loveland"
-                        android:text="Email"
+                        android:fontFamily="sans-serif"
+                        android:text="ahmedmostafataha32@yahoo.com"
                         android:textColor="#000000"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
 
-                        android:textStyle="italic" />
+                        />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -200,7 +200,7 @@
                     android:layout_height="70dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/ic_person_outline_black_24dp"
+                    android:background="@drawable/mazen"
                     />
 
                 <LinearLayout
@@ -216,7 +216,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/loveland"
-                        android:text="Name"
+                        android:text="Mazen Yosry Mansour"
                         android:textColor="#000000"
                         android:textSize="18sp" />
 
@@ -224,12 +224,10 @@
                         android:layout_width="250dp"
                         android:layout_height="25dp"
                         android:layout_marginLeft="25dp"
-                        android:fontFamily="@font/loveland"
-                        android:text="Email"
+                        android:fontFamily="sans-serif"
+                        android:text="mazen_yosrydev@outlook.com"
                         android:textColor="#000000"
-                        android:textSize="18sp"
-
-                        android:textStyle="italic" />
+                        android:textSize="14sp" />
 
 
 
@@ -245,6 +243,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
             android:foreground="?android:attr/selectableItemBackground">
 
 
@@ -259,7 +258,7 @@
                     android:layout_height="match_parent"
                     app:bg_color="@color/maincolor"
                     app:btn_radius="2"
-                    app:btn_text="Our Facebook Page"
+                    app:btn_text="Our Website"
                     app:text_size="12sp" />
 
 
