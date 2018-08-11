@@ -225,7 +225,7 @@
                         android:layout_height="25dp"
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif"
-                        android:text="mazen_yosrydev@outlook.com"
+                        android:text="mazen_yosry@outlook.com"
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
