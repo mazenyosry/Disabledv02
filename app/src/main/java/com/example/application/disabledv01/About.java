@@ -22,7 +22,7 @@ public class About extends AppCompatActivity {
             public void onSwipeConfirm() {
                 // user has swiped the btn. Perform your async operation now
 
-                String YourPageURL = "https://www.facebook.com/n/?wheelyapp.page";
+                String YourPageURL = "http://hti-project.000webhostapp.com/index.php";
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YourPageURL));
 
                 startActivity(browserIntent);

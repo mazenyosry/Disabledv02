@@ -64,7 +64,11 @@ public class Profile extends AppCompatActivity {
     ConnectionDetector cd;
     private Bitmap bitmap;
     private Uri filePath;
-
+    UpdataData updataData=new UpdataData();
+    String email_;
+    String city;
+    String state;
+    String stlocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,10 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         imageView = findViewById(R.id.profile_image);
+
+        SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
+        email_ =sharedPreferences.getString("email","1");
+        String password_ =sharedPreferences.getString("password","1");
 
 
         locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -92,9 +100,6 @@ public class Profile extends AppCompatActivity {
 
 
 
-        SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
-        String email_ =sharedPreferences.getString("email","1");
-        String password_ =sharedPreferences.getString("password","1");
 
 
 
@@ -140,10 +145,8 @@ public class Profile extends AppCompatActivity {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         } catch (Exception ex) {
         }
-        if (gps_enabled && location!=null) {
+        if (gps_enabled ) {
 
-            String provider = locationManager.getBestProvider(criteria, true);
-            Location location = locationManager.getLastKnownLocation(provider);
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
            location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             longitude = location.getLongitude();
@@ -162,14 +165,16 @@ public class Profile extends AppCompatActivity {
             }
 
             String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
+             city = addresses.get(0).getLocality();
+             state = addresses.get(0).getAdminArea();
             String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
             String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
             List<String> elephantList = Arrays.asList(address.split(","));
 
             Location_tx.setText(city + "," + state);
+
+            stlocation=city.toString()+","+state.toString();
 
 
         } else if (!gps_enabled) {
@@ -296,6 +301,8 @@ public class Profile extends AppCompatActivity {
                     email_tx = (TextView) findViewById(R.id.profile_Email);
                     name_tx.setText(s);
                     email_tx.setText(l);
+                    updataData.execute("http://hti-project.000webhostapp.com/model/location.php?email="+email_+"&location="+stlocation.toString().replace(" ",","));
+
                     Glide.with(Profile.this)
                             .asBitmap()
                             .load(photo)
@@ -389,9 +396,6 @@ public class Profile extends AppCompatActivity {
 
             @Override
             protected String doInBackground(Bitmap... params) {
-                SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
-                String email_ =sharedPreferences.getString("email","1");
-                String password_ =sharedPreferences.getString("password","1");
 
                 Bitmap bitmap = params[0];
                 String uploadImage = getStringImage(bitmap);
