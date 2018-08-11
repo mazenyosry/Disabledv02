@@ -64,6 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:fontFamily="@font/loveland"
+
                 android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
