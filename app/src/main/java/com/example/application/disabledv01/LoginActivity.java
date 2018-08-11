@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
         _loginButton.setEnabled(true);
     }
 /////////////////////////////////////////Validation////////////////////////////
-    public boolean validate() {
+    public boolean  validate() {
         boolean valid = true;
 
         String email = _emailText.getText().toString();

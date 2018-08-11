@@ -1,5 +1,6 @@
 package com.example.application.disabledv01;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,8 +21,16 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +49,8 @@ public class SignupActivity extends AppCompatActivity {
     @BindView(R.id.btn_signup) Button _signupButton;
     @BindView(R.id.link_login) TextView _loginLink;
     private ProgressDialog progress;
+    boolean sighnup=false;
+
 
 
     @Override
@@ -55,15 +66,20 @@ public class SignupActivity extends AppCompatActivity {
 
 
                 if (cd.isConnected()) {
-                    signup();
 
                     if (validate()) {
-
-                        GetData();
-
-                        InsertData(TempName, TempEmail, Temppassword);
-
+                        new MyAsyncTaskresource().execute("http://hti-project.000webhostapp.com/model/cemail.php?email=" + _emailText.getText().toString());
                     }
+//
+// signup();
+
+//                    if (validate()) {
+//
+//                        GetData();
+//
+//                        InsertData(TempName, TempEmail, Temppassword);
+//
+//                    }
                 }
                 else {
                     Toast.makeText(SignupActivity.this,"Please connect to the internet,you're not connected",Toast.LENGTH_LONG).show();
@@ -126,12 +142,14 @@ public class SignupActivity extends AppCompatActivity {
                 return "Data Inserted Successfully";
             }
 
+
             @Override
             protected void onPostExecute(String result) {
 
+
                 super.onPostExecute(result);
 
-                Toast.makeText(SignupActivity.this, "You Have Signed up Successfully , Your Data Is Secured.", Toast.LENGTH_LONG).show();
+
 
             }
         }
@@ -142,35 +160,40 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-        Log.d(TAG, "Signup");
-
-        if (!validate()) {
-            onSignupFailed();
-            return;
-        }
-
-        _signupButton.setEnabled(false);
-        progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait.");
 
 
 
-        // TODO: Implement your own signup logic here.
+            Log.d(TAG, "Signup");
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progress.dismiss();
-                    }
-                }, 3000);
+            if (!validate()) {
+                onSignupFailed();
+                return;
+            } else {
+
+                _signupButton.setEnabled(false);
+                progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait.");
+
+
+                // TODO: Implement your own signup logic here.
+
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                // On complete call either onSignupSuccess or onSignupFailed
+                                // depending on success
+                                onSignupSuccess();
+                                // onSignupFailed();
+                                progress.dismiss();
+                            }
+                        }, 3000);
+            }
+
     }
 
     public void onSignupSuccess() {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        Toast.makeText(SignupActivity.this, "You Have Signed up Successfully , Your Data Is Secured.", Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -196,7 +219,7 @@ public class SignupActivity extends AppCompatActivity {
             _nameText.setError(null);
         }
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()  ) {
             _emailText.setError("Please,Enter a valid email address form");
             valid = false;
         } else {
@@ -220,5 +243,139 @@ public class SignupActivity extends AppCompatActivity {
 
         return valid;
     }
+
+
+
+
+
+
+    String result = "";
+    @SuppressLint("StaticFieldLeak")
+    public class MyAsyncTaskresource extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+
+        }
+        @Override
+        protected String  doInBackground(String... params) {
+
+
+            InputStream isr = null;
+
+            try{
+                String URL=params[0];
+                java.net.URL url = new URL( URL);
+                URLConnection urlConnection = url.openConnection();
+                isr  = new BufferedInputStream(urlConnection.getInputStream());
+
+            }
+
+            catch(Exception e){
+
+                Log.e("log_tag", "Error in http connection " + e.toString());
+
+
+
+            }
+
+//convert response to string
+
+            try{
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(isr,"iso-8859-1"),8);
+
+                StringBuilder sb = new StringBuilder();
+
+                String line = null;
+
+                while ((line = reader.readLine()) != null) {
+
+                    sb.append(line + "\n");
+
+                }
+
+                isr.close();
+
+                result=sb.toString();
+
+            }
+
+            catch(Exception e){
+
+                Log.e("log_tag", "Error  converting result " + e.toString());
+
+            }
+
+//parse json data
+
+
+            return null;
+        }
+
+        protected void onPostExecute(String  result2) {
+            try {
+
+                String s = "";
+
+                JSONArray jArray = new JSONArray(result);
+
+                for (int i = 0; i < jArray.length(); i++) {
+
+                    JSONObject json = jArray.getJSONObject(i);
+
+                    s = s + "login info : " + json.getString("user_id")
+                            + " " + json.getString("user_name");
+
+
+                    break;
+
+                }
+
+
+                if (s.length() > 0) {
+
+
+
+                    Toast.makeText(getApplicationContext(), "This email ia already used ", Toast.LENGTH_LONG).show();
+                    _emailText.setError("Email exists");
+                    sighnup = true;
+
+                }
+
+
+
+            }
+            catch (Exception e) {
+
+// TODO: handle exception
+
+                Log.e("log_tag", "Error Parsing Data "+e.toString());
+
+            }
+
+            if ((!sighnup)) {
+
+                if (validate()) {
+                    signup();
+                    GetData();
+                    InsertData(TempName, TempEmail, Temppassword);
+
+                }
+            }
+            sighnup=false;
+
+//            else {
+//                _emailText.setError("Email exists");
+//
+//            }
+        }
+
+
+
+
+    }
+
+
+
 
 }

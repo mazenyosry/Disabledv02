@@ -77,14 +77,12 @@ public class Changepassword extends AppCompatActivity {
                     }
 
                     else{
-                       // Toast.makeText(Changepassword.this,"New Passwords Aren't The Same",Toast.LENGTH_LONG).show();
                         renewpass.setError("New Passwords Aren't The Same");
 
                     }
 
                 }
                 else {
-                  //  Toast.makeText(getBaseContext(), "Old Password is wrong", Toast.LENGTH_LONG).show();
                     oldpass.setError("Old Password is wrong");
 
 
