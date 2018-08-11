@@ -132,7 +132,6 @@ public class Battery extends AppCompatActivity {
 
                     String s = readMessage.replaceAll(" ","");
                     updataData.execute("http://hti-project.000webhostapp.com/model/battary.php?email="+email_+"&battery="+s);
-                    Toast.makeText(getBaseContext(),s, Toast.LENGTH_SHORT).show();
 
 
 
@@ -141,10 +140,8 @@ public class Battery extends AppCompatActivity {
 
                 if(msg.what == CONNECTING_STATUS){
                     if(msg.arg1 == 1)
-//                        valueE.setText("Connected to Device: " + (String)(msg.obj));
                         ;
                     else
-//                       valueE.setText("Connection Failed");
 
                         Toast.makeText(getBaseContext(), "Chaire not on", Toast.LENGTH_SHORT).show();
 

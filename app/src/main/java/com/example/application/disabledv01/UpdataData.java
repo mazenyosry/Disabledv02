@@ -18,9 +18,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-/**
- * Created by Mahmo on 8/10/2018.
- */
 @SuppressLint("StaticFieldLeak")
 
 public class UpdataData extends AsyncTask<String, String, String> {

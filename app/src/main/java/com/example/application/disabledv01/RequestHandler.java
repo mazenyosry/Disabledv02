@@ -14,10 +14,6 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * Created by mizo_ on 11-Aug-18.
- */
-
 public class RequestHandler {
 
     public String sendPostRequest(String requestURL,
