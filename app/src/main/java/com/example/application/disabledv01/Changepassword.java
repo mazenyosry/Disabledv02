@@ -5,9 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,37 +52,45 @@ public class Changepassword extends AppCompatActivity {
 
             if (validate()) {
 
-                if (oldpass.getText().toString().equals(password_)&&newpass.getText().toString().equals(renewpass.getText().toString()) ) {
+                if (oldpass.getText().toString().equals(password_) ) {
 
                     if (newpass.getText().toString().equals(renewpass.getText().toString())) {
-                        final ProgressDialog progress = new ProgressDialog(this);
-                        progress.setTitle("Changing password");
-                        progress.setMessage("Please wait ...");
-                        progress.show();
+                            final ProgressDialog progress = new ProgressDialog(this);
+                            progress.setTitle("Changing password");
+                            progress.setMessage("Please wait ...");
+                            progress.show();
 
-                        // TODO: Implement your own authentication logic here.
-                        new android.os.Handler().postDelayed(
-                                new Runnable() {
-                                    public void run() {
-                                        // On complete call either onLoginSuccess or onLoginFailed
-                                        updataData.execute("http://hti-project.000webhostapp.com/model/password.php?email=" + email_ + "&password=" + newpass.getText().toString());
-                                        // onLoginFailed();
-                                        Toast.makeText(getBaseContext(), "Password Changed ", Toast.LENGTH_SHORT).show();
-                                        Intent in = new Intent(getApplicationContext(), LoginActivity.class);
-                                        startActivity(in);
-                                        finish();
-                                        progress.dismiss();
-                                    }
-                                }, 5000);
+                            // TODO: Implement your own authentication logic here.
+                            new android.os.Handler().postDelayed(
+                                    new Runnable() {
+                                        public void run() {
+                                            // On complete call either onLoginSuccess or onLoginFailed
+                                            updataData.execute("http://hti-project.000webhostapp.com/model/password.php?email=" + email_ + "&password=" + newpass.getText().toString());
+                                            // onLoginFailed();
+                                            Toast.makeText(getBaseContext(), "Password Changed ", Toast.LENGTH_SHORT).show();
+                                            Intent in = new Intent(getApplicationContext(), LoginActivity.class);
+                                            startActivity(in);
+                                            finish();
+                                            progress.dismiss();
+                                        }
+                                    }, 5000);
+                    }
 
+                    else{
+                       // Toast.makeText(Changepassword.this,"New Passwords Aren't The Same",Toast.LENGTH_LONG).show();
+                        renewpass.setError("New Passwords Aren't The Same");
 
                     }
 
                 }
                 else {
-                    Toast.makeText(getBaseContext(), "Check youe data", Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(getBaseContext(), "Old Password is wrong", Toast.LENGTH_LONG).show();
+                    oldpass.setError("Old Password is wrong");
+
 
                 }
+
+
             }
         }
         else {

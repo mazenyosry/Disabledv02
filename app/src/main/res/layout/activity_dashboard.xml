@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundcolor"
     tools:context="com.example.application.disabledv01.Dashboard">
 
     <ScrollView
@@ -67,6 +66,7 @@
                         android:clickable="true"
                         android:gravity="center"
                         android:onClick="profile"
+                        android:background="@drawable/das"
                         android:orientation="vertical"
                         tools:ignore="OnClick">
 
@@ -114,6 +114,7 @@
                         android:layout_height="match_parent"
                         android:clickable="true"
                         android:gravity="center"
+                        android:background="@drawable/das"
                         android:onClick="move"
                         android:orientation="vertical"
                         tools:ignore="OnClick">
@@ -171,7 +172,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
+                        android:background="@drawable/das"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="20dp">
@@ -220,6 +221,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/das"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -276,6 +278,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:background="@drawable/das"
                         android:orientation="vertical"
                         android:padding="20dp">
 
@@ -323,6 +326,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:background="@drawable/das"
                         android:orientation="vertical"
                         android:padding="20dp">
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundcolor"
+    android:background="@drawable/das"
     tools:context="com.example.application.disabledv01.Move">
 
 
@@ -17,7 +17,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/das"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/das"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.154"
@@ -60,7 +60,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/das"
         android:rotation="90"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/das"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,6 +111,8 @@
         android:scaleType="fitXY" />
     <Spinner
         android:id="@+id/speedSet"
+        android:background="@drawable/das"
+        android:popupBackground="@drawable/das"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginBottom="452dp"

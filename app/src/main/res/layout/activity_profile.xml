@@ -19,6 +19,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
+        android:background="@drawable/das"
         android:layout_height="200dp"
 
         android:layout_marginBottom="8dp"
@@ -76,6 +77,7 @@
         android:foreground="?android:attr/selectableItemBackground">
         <LinearLayout
             android:layout_width="match_parent"
+            android:background="@drawable/das"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
@@ -122,6 +124,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/das"
             android:orientation="horizontal">
 
             <ImageView
@@ -175,6 +178,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/das"
             android:orientation="horizontal">
 
             <ImageView

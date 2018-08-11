@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    android:background="@color/backgroundcolor"
+    android:background="@drawable/das"
     tools:actionBarNavMode="list">
 
     <LinearLayout
