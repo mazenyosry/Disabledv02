@@ -50,7 +50,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/loveland"
                     android:text="@string/UseTheAppQ"
                     android:textColor="@color/black"
                     android:textSize="21sp" />
@@ -63,7 +62,6 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
-                android:fontFamily="@font/loveland"
                 android:text="@string/HowToUseApp"
                 android:textSize="18sp" />
 
@@ -90,7 +88,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/loveland"
                     android:text="@string/ControlChairQ"
                     android:textColor="@color/black"
                     android:textSize="21sp" />
@@ -102,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="30dp"
-                android:fontFamily="@font/loveland"
                 android:text="@string/HowToControlChair"
                 android:textSize="18dp" />
             <LinearLayout
@@ -126,7 +122,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/loveland"
                     android:text="@string/ChairSpeedQ"
                     android:textColor="@color/black"
 
@@ -138,7 +133,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:fontFamily="@font/loveland"
                 android:text="@string/ControllingSpeed"
                 android:textSize="18sp" />
 
@@ -163,7 +157,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/loveland"
                     android:text="@string/BatteryPercentageQ"
 
                     android:textColor="@color/black"
@@ -176,7 +169,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="30dp"
-                android:fontFamily="@font/loveland"
                 android:text="@string/BatteryPercentage"
 
                 android:textSize="18sp" />
@@ -200,7 +192,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/loveland"
                     android:text="@string/HandKitQ"
                     android:textColor="@color/black"
                     android:textSize="21sp" />
@@ -211,7 +202,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:layout_marginLeft="30dp"
-                android:fontFamily="@font/loveland"
                 android:text="@string/HandkitUsage"
                 android:textSize="18sp" />
         </LinearLayout>

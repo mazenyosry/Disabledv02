@@ -53,13 +53,13 @@ public class Changepassword extends AppCompatActivity {
 
             if (validate()) {
 
-                if (oldpass.getText().toString().equals(password_)) {
-                    final ProgressDialog progress = new ProgressDialog(this);
-                    progress.setTitle("Connecting");
-                    progress.setMessage("Please wait while we connect to devices...");
-                    progress.show();
-                    if (newpass.getText().toString().equals(renewpass.getText().toString())) {
+                if (oldpass.getText().toString().equals(password_)&&newpass.getText().toString().equals(renewpass.getText().toString()) ) {
 
+                    if (newpass.getText().toString().equals(renewpass.getText().toString())) {
+                        final ProgressDialog progress = new ProgressDialog(this);
+                        progress.setTitle("Changing password");
+                        progress.setMessage("Please wait ...");
+                        progress.show();
 
                         // TODO: Implement your own authentication logic here.
                         new android.os.Handler().postDelayed(
@@ -81,7 +81,7 @@ public class Changepassword extends AppCompatActivity {
 
                 }
                 else {
-                    Toast.makeText(getBaseContext(), "Passwords not the same", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "Check youe data", Toast.LENGTH_LONG).show();
 
                 }
             }

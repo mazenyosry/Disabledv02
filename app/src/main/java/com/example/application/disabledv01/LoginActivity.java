@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         _loginButton.setEnabled(false);
 
 
-        progress = ProgressDialog.show(LoginActivity.this, "Signing In...", "Please Wait, I am retrieving your data and loging you in .");
+        progress = ProgressDialog.show(LoginActivity.this, "Signing In...", "Please Wait.");
 
 
         String email = _emailText.getText().toString();

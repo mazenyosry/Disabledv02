@@ -150,7 +150,7 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         _signupButton.setEnabled(false);
-        progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait, I am authenticating and saving your data .");
+        progress = ProgressDialog.show(SignupActivity.this, "Signing up...", "Please Wait.");
 
 
 
