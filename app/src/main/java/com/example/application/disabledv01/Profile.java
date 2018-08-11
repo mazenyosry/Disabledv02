@@ -77,6 +77,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         imageView = findViewById(R.id.profile_image);
+
         SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
         email_ =sharedPreferences.getString("email","1");
          password_ =sharedPreferences.getString("password","1");
@@ -184,7 +185,6 @@ public class Profile extends AppCompatActivity {
 
 
     }
-    
 
 
     public void setImg(View view) {
