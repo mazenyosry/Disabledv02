@@ -1,6 +1,7 @@
 package com.example.application.disabledv01;
 
 import android.Manifest;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,13 +10,18 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
+    BluetoothAdapter mBTAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
+
 
 
         int PERMISSION_ALL = 1;
@@ -43,8 +49,21 @@ public class Dashboard extends AppCompatActivity {
 
     public void battery(View v){
 
-        Intent ba = new Intent(this,Battery.class);
-        startActivity(ba);
+
+
+
+        if(!mBTAdapter.isEnabled()) {
+            Toast.makeText(getBaseContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
+        else {
+
+            Intent ba = new Intent(this,Battery.class);
+            startActivity(ba);
+
+        }
 
     }
 
