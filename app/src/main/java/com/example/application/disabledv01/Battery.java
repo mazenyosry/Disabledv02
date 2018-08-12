@@ -41,7 +41,6 @@ public class Battery extends AppCompatActivity {
     // GUI Components
 
     private BluetoothAdapter mBTAdapter;
-    private Set<BluetoothDevice> mPairedDevices;
 
 
     String address = "20:16:09:12:02:09";
@@ -77,7 +76,7 @@ public class Battery extends AppCompatActivity {
 
         SharedPreferences sharedPreferences=getSharedPreferences("acs", Context.MODE_PRIVATE);
         final String email_ =sharedPreferences.getString("email","1");
-        String password_ =sharedPreferences.getString("password","1");
+
 
 
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
@@ -98,11 +97,6 @@ public class Battery extends AppCompatActivity {
         else {
 
             co();
-
-
-
-
-
 
         }
 

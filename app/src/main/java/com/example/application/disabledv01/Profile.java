@@ -172,10 +172,9 @@ public class Profile extends AppCompatActivity {
             String postalCode = addresses.get(0).getPostalCode();
             String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
             List<String> elephantList = Arrays.asList(address.split(","));
-
             Location_tx.setText(city + "," + state);
 
-            stlocation=city.toString()+","+state.toString();
+            stlocation= city + "," + state;
 
 
         } else if (!gps_enabled) {
@@ -302,7 +301,7 @@ public class Profile extends AppCompatActivity {
                     email_tx = (TextView) findViewById(R.id.profile_Email);
                     name_tx.setText(s);
                     email_tx.setText(l);
-                    updataData.execute("http://hti-project.000webhostapp.com/model/location.php?email="+email_+"&location="+stlocation.toString().replace(" ",","));
+                    updataData.execute("http://hti-project.000webhostapp.com/model/location.php?email="+email_+"&location="+ stlocation.replace(" ",","));
 
                     Glide.with(Profile.this)
                             .asBitmap()
